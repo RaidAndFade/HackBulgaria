@@ -29,10 +29,20 @@ from sys import exit
 
 # FUNCTIONS
 def sevens_in_a_row(list, lenSevens):
-    if list.count(7) >= lenSevens:
+    if 7 not in list:
+        return False
+
+    rowSevens = 0
+    for i in range(len(list) - 1):
+        if list[i] == list[i + 1]:
+            rowSevens += 1
+
+    if rowSevens == lenSevens:
         return True
 
-    return False
+    else:
+        return False
+
 
 def inputList():
     print("Enter numbers. Type (S) to stop.")
