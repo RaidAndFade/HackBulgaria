@@ -23,14 +23,15 @@
 
 # FUNCTIONS
 def calculate_coins(money):
-    # money *= 100
+    money *= 100
     COINS = [ 100, 50, 20, 10, 5, 2, 1 ]
-    outputList = ()
+    outputList = {}
 
     for coin in COINS:
         coinsNeeded = int(money / coin)
-        outputList += (coin, ) * coinsNeeded
+        outputList[coin] = coinsNeeded
         money -= coin * coinsNeeded
+
 
     return outputList
 

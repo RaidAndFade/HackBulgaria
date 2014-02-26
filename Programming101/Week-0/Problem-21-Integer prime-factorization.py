@@ -34,17 +34,19 @@
 # FUNCTIONS
 def prime_factorization(number):
     primes = [ ]
-
     number = int(number)
 
     for divisor in range(2, number + 1):
+        divisorCount = 0
         while number % divisor == 0:
-            primes.append(divisor)
-            primes.append(primes.count(divisor))
+            divisorCount += 1
             number //= divisor
 
+            if not number % divisor == 0:
+                tuple = (divisor, divisorCount)
+                primes.append(tuple)
 
-    return tuple(primes)
+    return primes
 
 
 # main
