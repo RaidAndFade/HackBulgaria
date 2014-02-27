@@ -26,7 +26,7 @@ def groupby(func, seq):
     for element in seq:
         key = func(element)
 
-        if key not in outputDic.keys():
+        if key not in outputDic:
             outputDic[key] = [element]
 
         else:
