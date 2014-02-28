@@ -71,30 +71,39 @@ def reduce_file_path(path):
 
 # main
 def main():
+    print("Input:", "/")
     print("Output:", reduce_file_path("/"))
     print("Expected: /\n")
 
+    print("Input:", "/srv/../")
     print("Output:", reduce_file_path("/srv/../"))
     print("Expected: /\n")
 
+    print("Input:", "/srv/www/htdocs/wtf/")
     print("Output:", reduce_file_path("/srv/www/htdocs/wtf/"))
     print("Expected: /srv/www/htdocs/wtf\n")
 
+    print("Input:", "/srv/www/htdocs/wtf")
     print("Output:", reduce_file_path("/srv/www/htdocs/wtf"))
     print("Expected: /srv/www/htdocs/wtf\n")
 
+    print("Input:", "/srv/./././././")
     print("Output:", reduce_file_path("/srv/./././././"))
     print("Expected: /srv\n")
 
+    print("Input:", "/etc//wtf/")
     print("Output:", reduce_file_path("/etc//wtf/"))
     print("Expected: /etc/wtf\n")
 
+    print("Input:", "/etc/../etc/../etc/../")
     print("Output:", reduce_file_path("/etc/../etc/../etc/../"))
     print("Expected: /\n")
 
+    print("Input:", "//////////////")
     print("Output:", reduce_file_path("//////////////"))
     print("Expected: /\n")
 
+    print("Input:", "/../")
     print("Output:", reduce_file_path("/../"))
     print("Expected: /\n")
 
