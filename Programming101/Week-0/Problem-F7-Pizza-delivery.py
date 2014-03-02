@@ -216,10 +216,26 @@ def main():
                 print("You have not saved your order.")
                 print("If you wish to continue type finish again")
                 print("If you want to save your order, type save")
+
                 # confirms finish (not the best implementation)
-                inputConfirm = str(input())
-                if inputConfirm == "finish":
+                inputCommand[0] = str(input("Enter a command> "))
+                if inputCommand[0] == "finish":
                     exit("Command finish. Exiting...")
+
+                # reused from save
+                elif inputCommand[0] == "save":
+                    ts = time()
+                    filename = datetime.fromtimestamp(ts).strftime('%Y_%m_%d_%H_%M_%S')
+                    files.append(filename)
+                    file = open(filename, "w")
+
+                    for item in orders:
+                            file.write("%10s - %s" % (item, orders[item]))
+                            file.write("\n")
+
+                    # clear orders
+                    orders = { }
+                    history.append(inputCommand[0])
 
         # handle take
         elif inputCommand[0] == "take":
