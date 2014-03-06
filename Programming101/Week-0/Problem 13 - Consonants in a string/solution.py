@@ -2,7 +2,7 @@
 #
 # Implement a function, called count_consonants(str) which returns the count of all consonants in the given string str. Count uppercase consonants as well!
 #
-# The consonants are bcdfghjklmnqrstvwxz.
+# The consonants are bcdfghjklmnpqrstvwxz.
 #
 # Signature
 #
@@ -25,11 +25,10 @@
 # FUNCTIONS
 def count_consonants(string):
     consonants = ["b", "c", "d", "f", "g", "h", "j", "k", "l", "m", "n", "p", "q", "r", "s", "t", "v", "w", "x", "z" ]
-
     numConsonants = 0
 
-    for i in range(len(string)):
-        if string[i].lower() in consonants:
+    for char in string.lower():
+        if char in consonants:
             numConsonants += 1
 
     return numConsonants
