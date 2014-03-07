@@ -15,11 +15,22 @@
 #
 # story.txt:
 #
-# Now indulgence dissimilar for his thoroughly has terminated. Agreement offending commanded my an. Change wholly say why eldest period. Are projection put celebrated particular unreserved joy unsatiable its. In then dare good am rose bred or. On am in nearer square wanted.
+# Now indulgence dissimilar for his thoroughly has terminated.
+# Agreement offending commanded my an. Change wholly say why eldest period.
+# Are projection put celebrated particular unreserved joy unsatiable its.
+# In then dare good am rose bred or. On am in nearer square wanted.
 #
-# Of resolve to gravity thought my prepare chamber so. Unsatiable entreaties collecting may sympathize nay interested instrument. If continue building numerous of at relation in margaret. Lasted engage roused mother an am at. Other early while if by do to. Missed living excuse as be. Cause heard fat above first shall for. My smiling to he removal weather on anxious.
+# Of resolve to gravity thought my prepare chamber so.
+# Unsatiable entreaties collecting may sympathize nay interested instrument.
+# If continue building numerous of at relation in margaret. Lasted engage roused mother an am at.
+# Other early while if by do to. Missed living excuse as be.
+# Cause heard fat above first shall for. My smiling to he removal weather on anxious.
 #
-# Ferrars all spirits his imagine effects amongst neither. It bachelor cheerful of mistaken. Tore has sons put upon wife use bred seen. Its dissimilar invitation ten has discretion unreserved. Had you him humoured jointure ask expenses learning. Blush on in jokes sense do do. Brother hundred he assured reached on up no. On am nearer missed lovers. To it mother extent temper figure better.
+# Ferrars all spirits his imagine effects amongst neither. It bachelor cheerful of mistaken.
+# Tore has sons put upon wife use bred seen. Its dissimilar invitation ten has discretion unreserved.
+# Had you him humoured jointure ask expenses learning. Blush on in jokes sense do do.
+# Brother hundred he assured reached on up no. On am nearer missed lovers.
+# To it mother extent temper figure better.
 #
 # Print the chars:
 #
@@ -37,6 +48,7 @@
 # IMPORTS
 from sys import argv, exit
 
+
 # main
 def main():
     if len(argv) != 3:
@@ -44,16 +56,19 @@ def main():
 
     # count chars
     if argv[1] == "chars":
-        charsCount =  0
+        charsCount = 0
 
         filename = argv[2]
-        file = open(filename, "r")
-        line = file.readline()
+        file = ""
 
-        while line != "":
+        try:
+            file = open(filename, "r")
+        except IOError:
+            exit("Error: File not found!")
+
+        for line in file:
             line = line.strip()
             charsCount += len(line)
-            line = file.readline()
 
         print(charsCount)
 
@@ -62,14 +77,17 @@ def main():
         wordsList = []
 
         filename = argv[2]
-        file = open(filename, "r")
-        line = file.readline()
+        file = ""
 
-        while line != "":
+        try:
+            file = open(filename, "r")
+        except IOError:
+            exit("Error: File not found!")
+
+        for line in file:
             line = line.rsplit()
             for word in line:
                 wordsList.append(word)
-            line = file.readline()
 
         print(len(wordsList))
 
@@ -78,12 +96,15 @@ def main():
         numLines = 0
 
         filename = argv[2]
-        file = open(filename, "r")
-        line = file.readline()
+        file = ""
 
-        while line != "":
+        try:
+            file = open(filename, "r")
+        except IOError:
+            exit("Error: File not found!")
+
+        for line in file:
             numLines += 1
-            line = file.readline()
 
         print(numLines)
 
@@ -91,4 +112,5 @@ def main():
         exit("Invalid command given")
 
 # PROGRAM RUN
-main()
+if __name__ == '__main__':
+    main()

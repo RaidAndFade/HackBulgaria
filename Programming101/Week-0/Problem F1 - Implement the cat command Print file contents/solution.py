@@ -21,7 +21,8 @@
 #     main()
 # Examples
 #
-# If we have file.txt in the same directory with cat.py, and file.txt is with the following text:
+# If we have file.txt in the same directory with cat.py,
+# and file.txt is with the following text:
 #
 # Python is an awesome language!
 # You should try it.
@@ -32,15 +33,28 @@
 # You should try it.
 
 # IMPORTS
-import sys
+from sys import argv, exit
+
 
 # main
 def main():
-    filename = sys.argv[1]
-    file = open(filename, "r")
-    content = file.read()
-    print(content)
-    file.close()
+    filename = ""
+    try:
+        filename = argv[1]
+    except IndexError:
+        exit("Error: Give a file name to open!")
+
+    file = ""
+    content = ""
+    try:
+        file = open(filename, "r")
+        content = file.read()
+        print(content)
+        file.close()
+
+    except IOError:
+        exit("Error: File not found!")
 
 # PROGRAM RUN
-main()
+if __name__ == '__main__':
+    main()

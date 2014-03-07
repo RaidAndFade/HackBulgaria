@@ -205,77 +205,72 @@ def is_command(command_tuple, command_string):
     return command_tuple[0] == command_string
 
 
-def trigger_take(command_tuple):
+def trigger_take(command_tuple, orders_dict, history_list):
     if len(command_tuple) == 3:
         print("Taking order from %s for %s" % (command_tuple[1], command_tuple[2]))
-        orders[command_tuple[1]] = command_tuple[2]
-        history.append(command_tuple[0])
+        orders_dict[command_tuple[1]] = command_tuple[2]
+        history_list.append(command_tuple[0])
     else:
         print("Error command take: not enough arguments given!")
 
 
-def trigger_save(command_tuple):
+def trigger_save(command_tuple, orders_dict, files_list, history_list):
     ts = time()
     filename = datetime.fromtimestamp(ts).strftime('%Y_%m_%d_%H_%M_%S')
-    files.append(filename)
+    files_list.append(filename)
     file = open(filename, "w")
 
-    for item in orders:
-        file.write("%6s - %s" % (item, orders[item]))
-        file.write("\n")
+    for item in orders_dict:
+            file.write("%6s - %s" % (item, orders_dict[item]))
+            file.write("\n")
 
     # clear orders and add save as last valid command used
-    orders.clear()
-    history.append(command_tuple[0])
+    orders_dict = {}
+    history_list.append(command_tuple[0])
 
 
-def trigger_status(command_tuple):
-    if len(orders) == 0:
+def trigger_status(command_tuple, orders_dict, history_list):
+    if len(orders_dict) == 0:
         print("Orders dictionary is empty.")
     else:
-        for item in orders:
-            print("%6s - %s" % (item, orders[item]))
-        history.append(command_tuple[0])
+        for item in orders_dict:
+            print("%6s - %s" % (item, orders_dict[item]))
+        history_list.append(command_tuple[0])
 
 
-def trigger_list(command_tuple):
-    for i in range(len(files)):
-        print("[%s] - %s" % (i + 1, files[i]))
+def trigger_list(command_tuple, files_list, history_list):
+    for i in range(len(files_list)):
+        print("[%s] - %s" % (i + 1, files_list[i]))
 
-    history.append(command_tuple[0])
+    history_list.append(command_tuple[0])
 
 
-def trigger_load(command_tuple):
-    try:
-        if len(command_tuple) != 2:
-            print("Error command load: Invalid number of arguments")
-
-        elif len(command_tuple) == 2:
-            if history[len(history) - 1] != "list":
+def trigger_load(command_tuple, files_list, history_list):
+    if len(history_list) < 1:
+        if len(history_list) > 1:
+            if history_list[len(history_list) - 1] != "list":
                 print("Use list command before loading files.")
+        else:
+            print("Use list command before loading files.")
 
-            elif history[len(history) - 1] == "list":
-                    elementIndex = int(command_tuple[1]) - 1
-                    filename = files[elementIndex]
-                    print("Loaded %s" % filename)
-                    file = open(filename, "r")
-                    contents = file.read()
-                    print(contents)
-            else:
-                print("Use list command before loading files.")
+    elif len(command_tuple) != 2:
+        print("Error command load: Invalid number of arguments")
 
-    except IndexError:
-        print("Error: Invalid argument.")
-        return
+    elif history_list[len(history_list) - 1] == "list":
+            elementIndex = int(command_tuple[1]) - 1
+            filename = files_list[elementIndex]
+            file = open(filename, "r")
+            contents = file.read()
+            print(contents)
 
 
 def trigger_history(history_list):
         print(history_list)
 
 
-def trigger_finish(command_tuple):
-    if len(history) != 0:
-        if history[len(history)-1] != "save":
+def trigger_finish(command_tuple, history_list):
+    if len(history_list) != 0:
+        if history_list[len(history_list)-1] != "save":
             print("You have not saved your order")
             print("If you wish to continue exiting, type finish again")
             print("If you want to save your order, type save")
@@ -289,50 +284,48 @@ def trigger_finish(command_tuple):
 
 
 def trigger_unknown_command():
-    unknown_command = ["Error: Unknown command!",
-                       "Try one of the following:",
-                       " take <name> <price>",
-                       " status",
-                       " save",
-                       " list",
-                       " load <number>",
-                       " finish"]
+    unknown_command = ["Try one of the following:",
+                       "take <name> <price>"
+                       "status"
+                       "save"
+                       "list"
+                       "load <number>"
+                       "finish"]
 
-    print("\n".join(unknown_command))
-
-
-# must be global!
-# history - will store the orders before they're exported to files
-history = []
-# orders - will store the file names where the orders were exported
-orders = {}
-# files - will store all the VALID commands entered and
-# will be used for previous command conditions
-files = []
+    return "\n".join(unknown_command)
 
 
 # main
 def main():
     while True:
+        # will store the orders before they're exported to files
+        orders = {}
+        # will store the file names where the orders were exported
+        files = []
+        # will store all the VALID commands entered and
+        # will be used for previous command conditions
+        global history
+        history = []
+
         command = parse_command(input("Enter command>"))
 
         if is_command(command, "take"):
-            trigger_take(command)
+            trigger_take(command, orders, history)
 
         elif is_command(command, "status"):
-            trigger_status(command)
+            trigger_status(orders, orders, history)
 
         elif is_command(command, "save"):
-            trigger_save(command)
+            trigger_save(command, orders, files, history)
 
         elif is_command(command, "list"):
-            trigger_list(command)
+            trigger_list(command, files, history)
 
         elif is_command(command, "load"):
-            trigger_load(command)
+            trigger_load(command, files, history)
 
         elif is_command(command, "finish"):
-            trigger_finish(command)
+            trigger_finish(command, history)
 
         # easter egg
         elif is_command(command, "history"):
