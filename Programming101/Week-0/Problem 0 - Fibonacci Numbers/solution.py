@@ -29,7 +29,6 @@ def nth_fibonacci(number):
     else:
         return nth_fibonacci(number - 1) + nth_fibonacci(number - 2)
 
-
 # main
 def main():
     print(nth_fibonacci(1))
