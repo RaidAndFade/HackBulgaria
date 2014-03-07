@@ -28,7 +28,7 @@ class MyTestCase(unittest.TestCase):
         self.assertEqual("/", reduce_file_path("/etc/../etc/../etc/../"))
 
     def test_eight(self):
-        self.assertEqual("/". reduce_file_path("//////////////"))
+        self.assertEqual("/", reduce_file_path("//////////////"))
 
     def test_nine(self):
         self.assertEqual("/", reduce_file_path("/../"))

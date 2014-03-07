@@ -1,6 +1,7 @@
 # Problem 24 - Unique words
 #
-# Implement a function, called unique_words_count(arr) which returns the unique words count in arr.
+# Implement a function, called unique_words_count(arr)
+# which returns the unique words count in arr.
 #
 # arr is a list of strings.
 #
@@ -19,7 +20,7 @@
 
 # FUNCTIONS
 def unique_words_count(list):
-    uniqueList = [ ]
+    uniqueList = []
 
     for i in range(len(list)):
         if list[i] not in uniqueList:
@@ -34,4 +35,5 @@ def main():
     print(unique_words_count(["HELLO!"] * 10))
 
 # PROGRAM RUN
-main()
+if __name__ == '__main__':
+    main()

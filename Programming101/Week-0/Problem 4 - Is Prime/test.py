@@ -4,6 +4,7 @@
 from solution import is_prime
 import unittest
 
+
 # main
 class MyTestCase(unittest.TestCase):
     def test_is_prime_one(self):

@@ -2,9 +2,11 @@
 #
 # This problem is from the Python 2013 course in FMI
 #
-# Implement a function, called calculate_coins(sum) where sum is a floating point number.
+# Implement a function, called calculate_coins(sum)
+# where sum is a floating point number.
 #
-# The function should return a dictionary, that represents a way to get the sum with minimal number of coins.
+# The function should return a dictionary,
+# that represents a way to get the sum with minimal number of coins.
 #
 # The coins that we can use are with values 1,2,100,5,10,50,20.
 #
@@ -14,6 +16,7 @@
 #
 # def calculate_coins(sum):
 #     # Implementation
+#
 # Test examples
 #
 # >>> calculate_coins(0.53)
@@ -24,14 +27,13 @@
 # FUNCTIONS
 def calculate_coins(money):
     money *= 100
-    COINS = [ 100, 50, 20, 10, 5, 2, 1 ]
+    COINS = [100, 50, 20, 10, 5, 2, 1]
     outputList = {}
 
     for coin in COINS:
         coinsNeeded = int(money / coin)
         outputList[coin] = coinsNeeded
         money -= coin * coinsNeeded
-
 
     return outputList
 
@@ -41,4 +43,5 @@ def main():
     print(calculate_coins(8.94))
 
 # PROGRAM RUN
-main()
+if __name__ == '__main__':
+    main()

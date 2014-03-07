@@ -6,6 +6,7 @@
 #
 # def list_to_number(digits):
 #     # Implementation
+#
 # Test Examples
 #
 # >>> list_to_number([1,2,3])
@@ -19,10 +20,10 @@
 def list_to_number(list):
     outputNumber = ""
 
-    for i in range(len(list)):
-        outputNumber += str(list[i])
+    for element in list:
+        outputNumber += str(element)
 
-    return outputNumber
+    return int(outputNumber)
     
 # main
 def main():

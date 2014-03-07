@@ -8,6 +8,7 @@
 #
 # def count_vowels(str):
 #     # Implementation
+#
 # Test examples
 #
 # >>> count_vowels("Python")
@@ -24,11 +25,10 @@
 # FUNCTIONS
 def count_vowels(string):
     vowels = [ "a", "e", "i", "o", "u", "y" ]
-
     numVowels = 0
 
-    for i in range(len(string)):
-        if string[i] in vowels:
+    for char in string.lower():
+        if char in vowels:
             numVowels += 1
 
     return numVowels

@@ -24,24 +24,18 @@
 #     [1, 2, 3, 1, 2, 3]
 #     >>> nth_fib_lists([], [], 100)#     []
 
-# IMPORTS
 
 # FUNCTIONS
 def nth_fib_lists(listA, listB, n):
-    if n < 3:
-        return 1
-
-    position = 2 # 3 in list
-    while position < len(n) + 1:
+    position = 2
+    while position < n + 1:
         following = listA + listB
         listA = listB
         listB = following
         position += 1
 
-        if listB == n:
-            return True
+    return listA
 
-    return False
 
 # main
 def main():
@@ -50,6 +44,7 @@ def main():
     print(nth_fib_lists([1, 2], [1, 3], 3))
     print(nth_fib_lists([], [1, 2, 3], 4))
     print(nth_fib_lists([], [], 100))
+
 
 # PROGRAM RUN
 if __name__ == "__main__":

@@ -1,6 +1,8 @@
 # Problem 28 - Word from a^nb^n
 #
-# Implement a function, called is_an_bn(word) that checks if the given word is from the a^nb^n for n>=0 language. Here, a^n means a to the power of n - repeat the character "a" n times.
+# Implement a function, called is_an_bn(word) that checks if the given word is
+# from the a^nb^n for n>=0 language.
+# Here, a^n means a to the power of n - repeat the character "a" n times.
 #
 # Lets see few words from this language:
 #
@@ -8,8 +10,11 @@
 # for n = 1, this is the word "ab"
 # for n = 2, this is the word "aabb"
 # for n = 3, this is the word "aaabbb"
-# and so on - first, you repeat the character "a" n times, and after this - repeat "b" n times
-# The function should return True if the given word is from ```a^nb^n for n>=0" for some n.
+# and so on - first, you repeat the character "a" n times,
+# and after this - repeat "b" n times
+#
+# The function should return True
+# if the given word is from ```a^nb^n for n>=0" for some n.
 #
 # Signature
 #
@@ -59,4 +64,5 @@ def main():
     print(is_an_bn("aaaaabbbbb"))
 
 # PROGRAM RUN
-main()
+if __name__ == '__main__':
+    main()

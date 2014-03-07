@@ -1,8 +1,9 @@
 # Unit test for Problem 5 - Prime number of Divisors
 
 # IMPORTS
-from solution import prime_number_of_divisors, is_prime
+from solution import prime_number_of_divisors
 import unittest
+
 
 # main
 class MyTestCase(unittest.TestCase):

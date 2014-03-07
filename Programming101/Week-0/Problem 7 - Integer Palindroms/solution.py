@@ -1,8 +1,9 @@
 # Problem 7 - Integer Palindromes
 #
-# A palindrome is а word or a phrase or a number, that when reversed, stays the same.
+# A palindrome is а word or a phrase or a number,
+# that when reversed, stays the same.
 #
-# For example, the following sequences are palindromes : "azobi4amma4iboza" or "anna".
+# For example, the following sequences are palindromes: "azobi4amma4iboza" or "anna".
 #
 # But this time, we are not interested in words but numbers.
 # A number palindrome is a number, that taken backwards, remains the same.
@@ -16,6 +17,7 @@
 #
 # def is_int_palindrome(n):
 #     # implementation
+#
 # Test examples
 #
 # >>> is_int_palindrome(1)
@@ -28,6 +30,7 @@
 # True
 # >>> is_int_palindrome(123)
 # False
+
 
 # FUNCTIONS
 def is_int_palindrome(number):
@@ -45,6 +48,7 @@ def is_int_palindrome(number):
     else:
         return False
 
+
 # main
 def main():
     print(is_int_palindrome(1))
@@ -54,4 +58,5 @@ def main():
     print(is_int_palindrome(123))
 
 # PROGRAM RUN
-main()
+if __name__ == '__main__':
+    main()

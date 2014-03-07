@@ -24,6 +24,7 @@
 #     >>> sum_of_divisors(1000)
 #     2340
 
+
 # FUNCTIONS
 def sum_of_divisors(number):
     outputSum = 0
@@ -43,4 +44,5 @@ def main():
     print(sum_of_divisors(1000))
 
 # PROGRAM RUN
-main()
+if __name__ == '__main__':
+    main()

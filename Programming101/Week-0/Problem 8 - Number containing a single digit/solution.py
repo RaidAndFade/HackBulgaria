@@ -1,6 +1,7 @@
 # Problem 8 - Number containing a single digit?
 #
-# Implement a function, called contains_digit(number, digit) which checks if digit is contained by the given number.
+# Implement a function, called contains_digit(number, digit),
+# which checks if digit is contained by the given number.
 #
 # digit and number are integers.
 #
@@ -8,6 +9,7 @@
 #
 # def contains_digit(number, digit):
 #     # Implementation
+#
 # Test examples
 #
 # >>> contains_digit(123, 4)
@@ -19,6 +21,7 @@
 # >>> contains_digit(12346789, 5)
 # False
 
+
 # FUNCTIONS
 def contains_digit(number, digit):
     number = str(number)
@@ -29,6 +32,8 @@ def contains_digit(number, digit):
 
     else:
         return False
+
+
 # main
 def main():
     print(contains_digit(123, 4))
@@ -37,4 +42,5 @@ def main():
     print(contains_digit(12346789, 5))
 
 # PROGRAM RUN
-main()
+if __name__ == '__main__':
+    main()

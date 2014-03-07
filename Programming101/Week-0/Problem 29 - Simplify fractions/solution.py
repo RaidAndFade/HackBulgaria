@@ -1,10 +1,12 @@
 # Problem 29 - Simplify fractions
 #
-# Implement a function, called simplify_fraction(fraction) that takes a tuple of the form (nominator, denominator) and simplifies the fraction.
+# Implement a function, called simplify_fraction(fraction) 
+# that takes a tuple of the form (nominator, denominator) and simplifies the fraction.
 #
 # The function should return the fraction in it's irreducible form.
 #
-# For example, a fraction 3/9 can be reduced by dividing both the nominator and the denominator by 3. We end up with 1/3 which is irreducible.
+# For example, a fraction 3/9 can be reduced by dividing both the nominator 
+# and the denominator by 3. We end up with 1/3 which is irreducible.
 #
 # Signature
 #
@@ -48,4 +50,5 @@ def main():
     print(simplify_fraction((63,462)))
 
 # PROGRAM RUN
-main()
+if __name__ == '__main__':
+    main()

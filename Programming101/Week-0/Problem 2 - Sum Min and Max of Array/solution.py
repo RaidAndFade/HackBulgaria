@@ -39,4 +39,5 @@ def main():
     print(sum_of_min_and_max([1]))
 
 # PROGRAM RUN
-main()
+if __name__ == '__main__':
+    main()

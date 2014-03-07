@@ -33,8 +33,7 @@
 
 # FUNCTIONS
 def prime_factorization(number):
-    primes = [ ]
-    number = int(number)
+    primes = []
 
     for divisor in range(2, number + 1):
         divisorCount = 0
@@ -57,4 +56,5 @@ def main():
     print(prime_factorization(1000))
 
 # PROGRAM RUN
-main()
+if __name__ == '__main__':
+    main()

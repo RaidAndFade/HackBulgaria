@@ -1,8 +1,9 @@
 # Unit test for Problem 32 - Goldbach Conjecture
 
 # IMPORTS
-from solution import goldbach, is_prime
+from solution import goldbach
 import unittest
+
 
 # main
 class MyTestCase(unittest.TestCase):
@@ -20,6 +21,7 @@ class MyTestCase(unittest.TestCase):
 
     def test_100(self):
         self.assertEqual([(3, 97), (11, 89), (17, 83), (29, 71), (41, 59), (47, 53)], goldbach(100))
+
 
 # PROGRAM RUN
 if __name__ == '__main__':

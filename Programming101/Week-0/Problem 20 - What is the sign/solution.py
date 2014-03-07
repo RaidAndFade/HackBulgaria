@@ -1,23 +1,25 @@
 # Problem 20 - What is the sign?
 #
-# This problem is from the Python 2013 course in FMI. Link to original problem statement.
+# This problem is from the Python 2013 course in FMI.
 #
-# Implement a function, called what_is_my_sign(day, month) which takes two integer (one for the day and one for the month) and returns the name of the zodiac for the given time period.
+# Implement a function, called what_is_my_sign(day, month),
+# which takes two integer (one for the day and one for the month)
+# and returns the name of the zodiac for the given time period.
 #
-# Consider the following zodiac table (Or check wikipedia) :
+# Consider the following zodiac table (Or check wikipedia):
+#   Aries: 21 March – 20 April
+#   Taurus: 21 April – 21 May
+#   Gemini: 22 May – 21 June
+#   Cancer: 22 June – 22 July
+#   Leo: 23 July – 22 August
+#   Virgo: 23 August – 23 September
+#   Libra: 24 September – 23 October
+#   Scorpio: 24 October – 22 November
+#   Sagittarius: 23 November – 21 December
+#   Capricorn: 22 December – 20 January
+#   Aquarius: 21 January – 19 February
+#   Pisces: 20 February – 20 March
 #
-# Aries: 21 March – 20 April
-# Taurus: 21 April – 21 May
-# Gemini: 22 May – 21 June
-# Cancer: 22 June – 22 July
-# Leo: 23 July – 22 August
-# Virgo: 23 August – 23 September
-# Libra: 24 September – 23 October
-# Scorpio: 24 October – 22 November
-# Sagittarius: 23 November – 21 December
-# Capricorn: 22 December – 20 January
-# Aquarius: 21 January – 19 February
-# Pisces: 20 February – 20 March
 # Signature
 #
 # def what_is_my_sign(day, month):
@@ -44,11 +46,9 @@ from sys import exit
 
 # FUNCTIONS
 def what_is_my_sign(day, month):
-    # checks if day/month input is valid
     if month > 12 or month < 1:
         exit("Invalid month number.")
 
-    # Aquarius / Capricorn
     if month == 1:
         if day > 20:
             return "Aquarius"
@@ -81,18 +81,18 @@ def what_is_my_sign(day, month):
 
     elif month == 6:
         if day > 21:
-            print("Cancer")
+            return "Cancer"
         else:
-            print("Gemini")
+            return "Gemini"
 
     elif month == 7:
-        if day > 23:
+        if day > 22:
             return "Leo"
         else:
             return "Cancer"
 
     elif month == 8:
-        if day > 23:
+        if day > 22:
             return "Virgo"
         else:
             return "Leo"
@@ -117,7 +117,7 @@ def what_is_my_sign(day, month):
             return "Scorpio"
 
     else:
-        if day > 22:
+        if day > 21:
             return "Capricorn"
         else:
             return "Sagittarius"
@@ -133,4 +133,5 @@ def main():
     print(what_is_my_sign(9, 1))
 
 # PROGRAM RUN
-main()
+if __name__ == '__main__':
+    main()

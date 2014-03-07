@@ -17,6 +17,7 @@
 #
 # def slope_style_score(scores):
 #     # Implementation
+#
 # Test examples
 #
 # >>> slope_style_score([94, 95, 95, 95, 90])
@@ -30,11 +31,8 @@
 def slope_style_score(list):
     maxElement = max(list)
     minElement = min(list)
-
     list.remove(maxElement)
-
     list.remove(minElement)
-
     return sum(list) / len(list)
 
 # main

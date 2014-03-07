@@ -35,7 +35,6 @@
 #     >>> goldbach(100)
 #     [(3, 97), (11, 89), (17, 83), (29, 71), (41, 59), (47, 53)]
 
-# IMPORTS
 
 # FUNCTIONS
 # reused from Problem-4-Is-Prime
@@ -43,23 +42,22 @@ def is_prime(number):
     if number <= 1:
         return False
 
-
     divisor = 2
     while divisor < number:
         if number % divisor == 0:
             return False
-
         else:
             divisor += 1
 
     return True
 
+
 def goldbach(n):
     goldbach = []
 
     for number in range(n):
-        if is_prime(number) == True:
-            if is_prime(n - number) == True:
+        if is_prime(number) is True:
+            if is_prime(n - number) is True:
                 goldbach.append((number, n - number))
 
     for current in goldbach:
@@ -69,6 +67,7 @@ def goldbach(n):
                     del goldbach[goldbach.index(following)]
     return goldbach
 
+
 # main
 def main():
     print(goldbach(4))
@@ -76,6 +75,7 @@ def main():
     print(goldbach(8))
     print(goldbach(10))
     print(goldbach(100))
+
 
 # PROGRAM RUN
 if __name__ == "__main__":

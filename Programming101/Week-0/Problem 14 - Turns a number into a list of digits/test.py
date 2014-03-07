@@ -6,13 +6,13 @@ import unittest
 
 # main
 class MyTestCase(unittest.TestCase):
-    def test_one(self):
+    def test_123(self):
         self.assertEqual([1, 2, 3], number_to_list(123))
 
-    def test_two(self):
+    def test_99999(self):
         self.assertEqual([9, 9, 9, 9, 9], number_to_list(99999))
 
-    def test_three(self):
+    def test_123023(self):
         self.assertEqual([1, 2, 3, 0, 2, 3], number_to_list(123023))
 
 # PROGRAM RUN

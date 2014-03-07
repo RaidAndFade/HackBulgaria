@@ -4,9 +4,8 @@
 from solution import sudoku_solved
 import unittest
 
+
 # main
-
-
 class MyTestCase(unittest.TestCase):
 
     def test_True(self):

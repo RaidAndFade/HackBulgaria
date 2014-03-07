@@ -21,7 +21,6 @@ class MyTestCase(unittest.TestCase):
     def test_five(self):
         self.assertEqual(2, count_substrings("This is this and that is this", "this"))
 
-
 # PROGRAM RUN
 if __name__ == '__main__':
     unittest.main()

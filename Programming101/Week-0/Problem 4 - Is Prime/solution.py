@@ -27,11 +27,11 @@
 #     >>> is_prime(-10)
 #     False
 
+
 # FUNCTIONS
 def is_prime(number):
     if number <= 1:
         return False
-
 
     divisor = 2
     while divisor < number:
@@ -43,6 +43,7 @@ def is_prime(number):
 
     return True
 
+
 # main
 def main():
     print(is_prime(1))
@@ -52,4 +53,5 @@ def main():
     print(is_prime(-10))
 
 # PROGRAM RUN
-main()
+if __name__ == '__main__':
+    main()

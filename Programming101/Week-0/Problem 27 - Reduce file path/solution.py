@@ -63,7 +63,6 @@ def reduce_file_path(path):
             pathOut += "/" + path[i]
         i += 1
 
-
     if pathOut == "":
         pathOut = "/"
 
@@ -84,4 +83,5 @@ def main():
     print(reduce_file_path("/../"))
 
 # PROGRAM RUN
-main()
+if __name__ == '__main__':
+    main()

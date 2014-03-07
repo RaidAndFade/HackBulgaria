@@ -18,13 +18,9 @@
 # FUNCTIONS
 def number_to_list(number):
     outputList = [ ]
-    number = str(number)
-    numDigits = len(number)
 
-    for i in range(numDigits):
-        # digit = number % 10
-        outputList.append(int(number[i]))
-        # number = number // 10
+    for digit in str(number):
+        outputList.append(int(digit))
 
     return outputList
 

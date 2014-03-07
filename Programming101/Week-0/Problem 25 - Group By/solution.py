@@ -1,8 +1,10 @@
 # Problem 25 - Group By
 #
-# This problem is from the Python 2013 course in FMI You can see the original problem statement here - http://2013.fmi.py-bg.net/tasks/2
+# This problem is from the Python 2013 course in FMI.
+# You can see the original problem statement here - http://2013.fmi.py-bg.net/tasks/2
 #
-# Implement a function, called groupby(func, seq) which returns a dictionary, which keys are determined by the func argument.
+# Implement a function, called groupby(func, seq) which returns a dictionary,
+# which keys are determined by the func argument.
 #
 # The values are items from seq
 #
@@ -21,7 +23,7 @@
 
 # FUNCTIONS
 def groupby(func, seq):
-    outputDic = { }
+    outputDic = {}
 
     for element in seq:
         key = func(element)
@@ -41,4 +43,5 @@ def main():
     print(groupby(lambda x: x % 3, [0, 1, 2, 3, 4, 5, 6, 7]))
 
 # PROGRAM RUN
-main()
+if __name__ == '__main__':
+    main()

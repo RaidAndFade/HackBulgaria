@@ -7,7 +7,7 @@ import unittest
 # main
 class MyTestCase(unittest.TestCase):
     def test_one(self):
-        self.assertEqual(94.66, slope_style_score([94, 95, 95, 95, 90]))
+        self.assertAlmostEqual(94.66666666666667, slope_style_score([94, 95, 95, 95, 90]))
 
     def test_two(self):
         self.assertEqual(80.0, slope_style_score([60, 70, 80, 90, 100]))

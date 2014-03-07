@@ -23,6 +23,7 @@
 from collections import OrderedDict
 from operator import itemgetter
 
+
 # FUNCTIONS
 def sort_fractions(fractions):
     fractionsDictionary = {}
@@ -37,6 +38,7 @@ def sort_fractions(fractions):
         outputOrderedFractions.append(fraction)
 
     return outputOrderedFractions
+
 
 # main
 def main():

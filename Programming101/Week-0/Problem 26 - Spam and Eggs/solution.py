@@ -70,7 +70,6 @@ def prepare_meal(number):
 
     return outputString
 
-
 # main
 def main():
     print(prepare_meal(5))
@@ -81,4 +80,5 @@ def main():
     print(prepare_meal(7))
 
 # PROGRAM RUN
-main()
+if __name__ == '__main__':
+    main()

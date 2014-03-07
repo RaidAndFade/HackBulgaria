@@ -18,12 +18,12 @@
 #     >>> prime_number_of_divisors(9)
 #     True
 
+
 # FUNCTIONS
 # reuse from problem-4
 def is_prime(number):
     if number <= 1:
         return False
-
 
     divisor = 2
     while divisor < number:
@@ -35,6 +35,7 @@ def is_prime(number):
 
     return True
 
+
 def prime_number_of_divisors(number):
     numDivisors = 0
 
@@ -44,6 +45,7 @@ def prime_number_of_divisors(number):
 
     return is_prime(numDivisors)
 
+
 # main
 def main():
     print(prime_number_of_divisors(7))
@@ -51,4 +53,5 @@ def main():
     print(prime_number_of_divisors(9))
 
 # PROGRAM RUN
-main()
+if __name__ == '__main__':
+    main()
