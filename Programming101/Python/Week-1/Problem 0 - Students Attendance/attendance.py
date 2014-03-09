@@ -67,15 +67,14 @@ def trigger_command_change_date(command_tuple, current_date):
 def trigger_command_list(files):
     list_output = []
     i = 0
+    # clear files before updating it
+    files.clear()
     for file in os.listdir('.'):
         if file.startswith("attendance_"):
             i += 1
             files.append(file)
-            # print("[%s] - %s" % (i, file))
             list_output.append("[%s] - %s" % (i, file))
 
-    # update files to current listed
-    files = list_output
     return "\n".join(list_output)
 
 
@@ -119,7 +118,7 @@ def trigger_command_statistic(files):
     list_output = []
     # update files list before getting stats
     trigger_command_list(files)
-
+    print(files)
     for filename in files:
         file = open(filename, "r")
         file_students_attending = 0
