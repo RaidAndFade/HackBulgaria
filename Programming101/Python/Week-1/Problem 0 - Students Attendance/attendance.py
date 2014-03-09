@@ -103,13 +103,12 @@ def trigger_command_statistic():
 
     # bug: must have used list before statistic or else it doesn't work.
     for file in files:
+        file = open(file, "r")
         file_students_attending = 0
-        # may give strange numbers from time to time..
         for line in file:
-            if line.strip():
-                print(file_students_attending)
-                file_students_attending += 1
+            file_students_attending += 1
         print("File: %s - %s attending from total of %s students" % (file, file_students_attending, total_registered_students))
+        file.close()
 
 
 def trigger_unknown_command():
