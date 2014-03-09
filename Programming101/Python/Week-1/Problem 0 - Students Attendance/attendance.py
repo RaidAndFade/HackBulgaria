@@ -118,7 +118,6 @@ def trigger_command_statistic(files):
     list_output = []
     # update files list before getting stats
     trigger_command_list(files)
-    print(files)
     for filename in files:
         file = open(filename, "r")
         file_students_attending = 0
