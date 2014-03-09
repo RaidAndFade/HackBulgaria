@@ -1,4 +1,6 @@
-# DOCUMENTATION - 
+# DOCUMENTATION
+# https://github.com/syndbg/HackBulgaria/tree/master/Programming101/Python/Week-1/Problem%200%20-%20Students%20Attendance
+
 
 # IMPORTS
 import os
