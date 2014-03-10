@@ -1,22 +1,15 @@
 # A Py script that traverses a folder and runs unit tests named test.py.
 
 # IMPORTS
-from os import walk, path
+import glob
 from subprocess import call
-
 
 # main
 def main():
-    for root, dirs, files in walk("."):
-        for filename in files:
-            if filename == "test.py":
-                filename = path.join(root, filename)
-                try:
-                    call("python3 \"%s\"" % (filename), shell=True)
-
-                except Exception as error:
-                    print("MAYDAY! Error encountered!")
-                    print(error)
+    unit_test = str(input("Unit test's name:>"))
+    files = (glob.glob('*/%s' % unit_test))
+    for filename in files:
+        call("python3 \"%s\"" % (filename), shell=True)
 
 
 # PROGRAM RUN
