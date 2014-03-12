@@ -18,16 +18,27 @@
 # Use the string_utils.py module!
 
 
+# IMPORTS
+from re import sub
+
+
 # FUNCTIONS
 def tabs_to_spaces(string, one_tab_n_spaces):
+    output = ""
     seperator = " " * one_tab_n_spaces
-    string = string.split(seperator)
-    return "\t".join(string)
+    # works but spaces before the first word or last word,
+    # won't be replaced by a tab.
+    # output = seperator.join(string.split())
+    # return output
+
+    # works for all cases
+    output = sub(" +", seperator, string)
+    return output
 
 
 # main
 def main():
-    tabs_to_spaces("hello    world", 4)
+    print(tabs_to_spaces("                          hello         world", 4))
     tabs_to_spaces("goodbye       world", 4)
 
 

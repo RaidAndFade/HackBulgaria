@@ -251,7 +251,7 @@ def trigger_load(command_tuple):
             print("Error command load: Invalid number of arguments")
 
         elif len(command_tuple) == 2:
-            if history[len(history) - 1] != "list":
+            if history[-1] != "list":
                 print("Use list command before loading files.")
 
             elif history[len(history) - 1] == "list":
