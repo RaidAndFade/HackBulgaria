@@ -20,34 +20,15 @@
 
 # IMPORTS
 from re import sub
-from sys import argv
 
 
 # FUNCTIONS
-def read_file_contents(filename):
-    # read file contents
-    file = open(filename, "r")
-    contents = file.read()
-    file.close()
-    return contents
-
-
-def write_file_contents(filename, contents):
-    file = open(filename, "w")
-    file.write(contents)
-    file.close()
-
-
 def tabs_to_spaces(string, one_tab_n_spaces):
-    contents = read_file_contents(argv[1])
     # separator (tab)
     separator = " " * one_tab_n_spaces
 
     # replace spaces with tab in contents
-    output = sub(" +", separator, contents)
-
-    # write the contents to the file
-    write_file_contents(string, output)
+    output = sub(" +", separator, string)
 
     # return the new contents
     return output
@@ -55,7 +36,7 @@ def tabs_to_spaces(string, one_tab_n_spaces):
 
 # main
 def main():
-    tabs_to_spaces(argv[1], 4)
+    tabs_to_spaces("    hello       world       !", 4)
 
 
 # PROGRAM RUN

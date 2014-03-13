@@ -31,7 +31,7 @@ def number_of_files_with_extension(extension):
 
 # main
 def main():
-    print(number_of_files_with_extension(argv[1]))
+    number_of_files_with_extension(argv[1])
 
 
 # PROGRAM RUN
