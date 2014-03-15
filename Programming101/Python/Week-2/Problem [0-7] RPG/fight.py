@@ -4,7 +4,6 @@
 
 # IMPORTS
 from random import randint
-import hero
 
 
 class Fight():
@@ -21,7 +20,7 @@ class Fight():
 
     def simulate_fight(self):
         if self.attack_first == "human":
-                self.orc.take_damage(self.human.attack())
+            self.orc.take_damage(self.human.attack())
         else:
             self.human.take_damage(self.orc.attack())
 
