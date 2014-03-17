@@ -246,18 +246,18 @@ class TestWeapon(unittest.TestCase):
 
 class TestFight(unittest.TestCase):
     def setUp(self):
-        self.dummy_human = hero.Human("Human", 2500, "the common")
-        self.dummy_orc = hero.Orc("Orc", 3300, 1.3)
+        self.dummy_human = hero.Human("Android", 2500, "the master race")
+        self.dummy_orc = hero.Orc("iOS", 3300, 1.3)
         self.fight = fight.Fight(self.dummy_human, self.dummy_orc)
 
         self.dummy_human.equip_weapon(weapon.Weapon("Sword of a Thousand Truths", 480, 0.4))
         self.dummy_orc.equip_weapon(weapon.Weapon("Aeglos", 390, 0.1))
 
     def test_attack_first(self):
-        if self.fight.attack_first == 'human':
-            self.assertEqual('human', self.fight.attack_first)
+        if self.fight.attack_first == self.dummy_human.name:
+            self.assertEqual(self.dummy_human.name, self.fight.attack_first)
         else:
-            self.assertEqual('orc', self.fight.attack_first)
+            self.assertEqual(self.dummy_orc.name, self.fight.attack_first)
 
     def test_fight_simulation(self):
         self.assertTrue(self.fight.simulate_fight())
