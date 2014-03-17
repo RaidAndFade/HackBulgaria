@@ -1,8 +1,10 @@
 # Unit test for Problem 28 - Word from a^nb^n
 
+
 # IMPORTS
 from solution import is_an_bn
 import unittest
+
 
 # main
 class MyTestCase(unittest.TestCase):
@@ -26,6 +28,7 @@ class MyTestCase(unittest.TestCase):
 
     def test_seven(self):
         self.assertTrue(is_an_bn("aaaaabbbbb"))
+
 
 # PROGRAM RUN
 if __name__ == '__main__':

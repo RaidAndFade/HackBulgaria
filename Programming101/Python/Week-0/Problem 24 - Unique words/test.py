@@ -1,8 +1,10 @@
 # Unit test for Problem 24 - Unique words
 
+
 # IMPORTS
 from solution import unique_words_count
 import unittest
+
 
 # main
 class MyTestCase(unittest.TestCase):
@@ -14,6 +16,7 @@ class MyTestCase(unittest.TestCase):
 
     def test_three(self):
         self.assertEqual(1, unique_words_count(["HELLO!"] * 10))
+
 
 # PROGRAM RUN
 if __name__ == '__main__':

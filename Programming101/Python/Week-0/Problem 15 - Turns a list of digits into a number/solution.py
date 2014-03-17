@@ -1,35 +1,23 @@
-# Problem 15 - Turn a list of digits into a number
-#
-# Implement a function, called list_to_number(digits) which takes a list of digits (integers) and returns the number, containing those digits.
-#
-# Signature
-#
-# def list_to_number(digits):
-#     # Implementation
-#
-# Test Examples
-#
-# >>> list_to_number([1,2,3])
-# 123
-# >>> list_to_number([9,9,9,9,9])
-# 99999
-# >>> list_to_number([1,2,3,0,2,3])
-# 123023
+# Documentation
+# https://github.com/HackBulgaria/Programming101/blob/master/week0/simple_problems.md#problem-15---turn-a-list-of-digits-into-a-number
+
 
 # FUNCTIONS
 def list_to_number(list):
-    outputNumber = ""
-
+    output_number = ""
     for element in list:
-        outputNumber += str(element)
+        output_number += str(element)
 
-    return int(outputNumber)
-    
+    return int(output_number)
+
+
 # main
 def main():
-    print(list_to_number([1,2,3]))
-    print(list_to_number([9,9,9,9,9]))
-    print(list_to_number([1,2,3,0,2,3]))
+    list_to_number([1,2,3])
+    list_to_number([9,9,9,9,9])
+    list_to_number([1,2,3,0,2,3])
+
 
 # PROGRAM RUN
-main()
+if __name__ == '__main__':
+    main()

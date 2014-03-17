@@ -29,12 +29,15 @@ def nth_fibonacci(number):
     else:
         return nth_fibonacci(number - 1) + nth_fibonacci(number - 2)
 
+
 # main
 def main():
-    print(nth_fibonacci(1))
-    print(nth_fibonacci(2))
-    print(nth_fibonacci(3))
-    print(nth_fibonacci(10))
+    nth_fibonacci(1)
+    nth_fibonacci(2)
+    nth_fibonacci(3)
+    nth_fibonacci(10)
+
 
 # PROGRAM RUN
-main()
+if __name__ == '__main__':
+    main()

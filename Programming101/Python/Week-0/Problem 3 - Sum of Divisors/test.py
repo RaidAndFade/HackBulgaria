@@ -19,6 +19,7 @@ class MyTestCase(unittest.TestCase):
     def test_four(self):
         self.assertEqual(2340, sum_of_divisors(1000))
 
+
 # PROGRAM RUN
 if __name__ == '__main__':
     unittest.main()

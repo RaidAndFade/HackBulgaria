@@ -1,8 +1,10 @@
 # Unit test for Problem 21 - Integer prime factorization
 
+
 # IMPORTS
 from solution import prime_factorization
 import unittest
+
 
 # main
 class MyTestCase(unittest.TestCase):
@@ -20,6 +22,7 @@ class MyTestCase(unittest.TestCase):
 
     def test_1000(self):
         self.assertEqual([(2, 3), (5, 3)], prime_factorization(1000))
+
 
 # PROGRAM RUN
 if __name__ == '__main__':

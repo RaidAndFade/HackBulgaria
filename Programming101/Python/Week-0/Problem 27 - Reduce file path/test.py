@@ -1,8 +1,10 @@
 # Unit test for Problem 27 - Reduce file path
 
+
 # IMPORTS
 from solution import reduce_file_path
 import unittest
+
 
 # main
 class MyTestCase(unittest.TestCase):
@@ -32,6 +34,7 @@ class MyTestCase(unittest.TestCase):
 
     def test_nine(self):
         self.assertEqual("/", reduce_file_path("/../"))
+
 
 # PROGRAM RUN
 if __name__ == '__main__':

@@ -1,8 +1,10 @@
 # Unit test for Problem 12 - Vowels in a string
 
+
 # IMPORTS
 from solution import count_vowels
 import unittest
+
 
 # main
 class MyTestCase(unittest.TestCase):
@@ -19,7 +21,8 @@ class MyTestCase(unittest.TestCase):
         self.assertEqual(22, count_vowels("Github is the second best thing that happend to programmers, after the keyboard!"))
 
     def test_five(self):
-        self.assertEqual(8, count_vowels("A nice day to code!"))        
+        self.assertEqual(8, count_vowels("A nice day to code!"))
+
 
 # PROGRAM RUN
 if __name__ == '__main__':

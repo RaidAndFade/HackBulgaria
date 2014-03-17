@@ -1,37 +1,21 @@
-# Problem 11 - Counting substrings
-#
-# Implement a function, called count_substrings(haystack, needle) which returns the count of occurrences of the string needle in the string haystack.
-#
-# Don't count overlapped substings and take case into consideration! For overlapping substrings, check the "baba" example below.
-#
-# Signature
-#
-# def count_substrings(haystack, needle):
-#     # Implementation
-# Test examples
-#
-# >>> count_substrings("This is a test string", "is")
-# 2
-# >>> count_substrings("babababa", "baba")
-# 2
-# >>> count_substrings("Python is an awesome language to program in!", "o")
-# 4
-# >>> count_substrings("We have nothing in common!", "really?")
-# 0
-# >>> count_substrings("This is this and that is this", "this")  # "This" != "this"
-# 2
+# Documentation
+# https://github.com/HackBulgaria/Programming101/blob/master/week0/simple_problems.md#problem-11---counting-substrings
+
 
 # FUNCTIONS
 def count_substrings(string, word):
     return string.count(word)
 
+
 # main
 def main():
-    print(count_substrings("This is a test string", "is"))
-    print(count_substrings("babababa", "baba"))
-    print(count_substrings("Python is an awesome language to program in!", "o"))
-    print(count_substrings("We have nothing in common!", "really?"))
-    print(count_substrings("This is this and that is this", "this"))
+    count_substrings("This is a test string", "is")
+    count_substrings("babababa", "baba")
+    count_substrings("Python is an awesome language to program in!", "o")
+    count_substrings("We have nothing in common!", "really?")
+    count_substrings("This is this and that is this", "this")
+
 
 # PROGRAM RUN
-main()
+if __name__ == '__main__':
+    main()

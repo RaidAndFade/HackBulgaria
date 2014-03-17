@@ -1,38 +1,22 @@
-# Problem 24 - Unique words
-#
-# Implement a function, called unique_words_count(arr)
-# which returns the unique words count in arr.
-#
-# arr is a list of strings.
-#
-# Signature
-#
-# def unique_words_count(arr):
-#     # Implementation
-# Test examples
-#
-# >>> unique_words_count(["apple", "banana", "apple", "pie"])
-# 3
-# >>> unique_words_count(["python", "python", "python", "ruby"])
-# 2
-# >>> unique_words_count(["HELLO!"] * 10)
-# 1
+# Documentation
+# https://github.com/HackBulgaria/Programming101/blob/master/week0/simple_problems2.md#problem-24---unique-words
+
 
 # FUNCTIONS
 def unique_words_count(list):
-    uniqueList = []
+    unique_list = []
+    for element in list:
+        if element not in unique_list:
+            unique_list.append(element)
+    return len(unique_list)
 
-    for i in range(len(list)):
-        if list[i] not in uniqueList:
-            uniqueList.append(list[i])
-
-    return len(uniqueList)
 
 # main
 def main():
-    print(unique_words_count(["apple", "banana", "apple", "pie"]))
-    print(unique_words_count(["python", "python", "python", "ruby"]))
-    print(unique_words_count(["HELLO!"] * 10))
+    unique_words_count(["apple", "banana", "apple", "pie"])
+    unique_words_count(["python", "python", "python", "ruby"])
+    unique_words_count(["HELLO!"] * 10)
+
 
 # PROGRAM RUN
 if __name__ == '__main__':

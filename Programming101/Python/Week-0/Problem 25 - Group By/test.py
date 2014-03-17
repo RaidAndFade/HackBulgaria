@@ -1,8 +1,10 @@
 # Unit test for Problem 25 - Group By
 
+
 # IMPORTS
 from solution import groupby
 import unittest
+
 
 # main
 class MyTestCase(unittest.TestCase):
@@ -14,6 +16,7 @@ class MyTestCase(unittest.TestCase):
 
     def test_three(self):
         self.assertEqual({0: [0, 3, 6], 1: [1, 4, 7], 2: [2, 5]}, groupby(lambda x: x % 3, [0, 1, 2, 3, 4, 5, 6, 7]))
+
 
 # PROGRAM RUN
 if __name__ == '__main__':

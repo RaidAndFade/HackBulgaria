@@ -1,34 +1,21 @@
-# Problem 14 - Turn a number into a list of digits
-#
-# Implement a function, called number_to_list(n) which takes an integer n and returns a list, containing the digits of n
-#
-# Signature
-#
-# def number_to_list(n):
-#     # Implementation
-# Test Examples
-#
-# >>> number_to_list(123)
-# [1, 2, 3]
-# >>> number_to_list(99999)
-# [9, 9, 9, 9, 9]
-# >>> number_to_list(123023)
-# [1, 2, 3, 0, 2, 3]
+# Documentation
+# https://github.com/HackBulgaria/Programming101/blob/master/week0/simple_problems.md#problem-14---turn-a-number-into-a-list-of-digits
+
 
 # FUNCTIONS
 def number_to_list(number):
-    outputList = [ ]
-
+    output_list = []
     for digit in str(number):
-        outputList.append(int(digit))
+        output_list.append(int(digit))
+    return output_list
 
-    return outputList
 
 # main
 def main():
-    print(number_to_list(123))
-    print(number_to_list(99999))
-    print(number_to_list(123023))
+    number_to_list(123)
+    number_to_list(99999)
+    number_to_list(123023)
 
 # PROGRAM RUN
-main()
+if __name__ == '__main__':
+    main()

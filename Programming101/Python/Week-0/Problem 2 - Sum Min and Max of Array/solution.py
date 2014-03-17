@@ -1,42 +1,25 @@
-# Problem 2
-#
-# Given an array of integers, write a function, called sum_of_min_and_max(arr), that calculates and returns the sum of the largest and the smallest integers in the array.
-#
-# Don't bother for the case when the array is empty.
-#
-# Signature
-#
-#     def sum_of_min_and_max(arr):
-#         # implementation
-#
-# Test examples
-#
-#     >>> sum_of_min_and_max([1,2,3,4,5,6,8,9])
-#     10
-#     >>> sum_of_min_and_max([-10,5,10,100])
-#     90
-#     >>> sum_of_min_and_max([1])
-#     2
+# Documentation
+# https://github.com/HackBulgaria/Programming101/blob/master/week0/simple_problems.md#problem-2---sum-the-minimum-and-maximum-elements
+
 
 # FUNCTIONS
 def sum_of_min_and_max(list):
     if len(list) > 0:
-        minList = min(list)
-        maxList = max(list)
-
+        min_element = min(list)
+        max_element = max(list)
         # too easy?
-        return minList + maxList
-
+        return min_element + max_element
     else:
-        print("List is empty")
-        return
+        # List is empty
+        return False
 
 
 # main
 def main():
-    print(sum_of_min_and_max([1,2,3,4,5,6,8,9]))
-    print(sum_of_min_and_max([-10,5,10,100]))
-    print(sum_of_min_and_max([1]))
+    sum_of_min_and_max([1, 2, 3, 4, 5, 6, 8, 9])
+    sum_of_min_and_max([-10, 5, 10, 100])
+    sum_of_min_and_max([1])
+
 
 # PROGRAM RUN
 if __name__ == '__main__':
