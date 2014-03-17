@@ -305,15 +305,12 @@ class TestDungeon(unittest.TestCase):
         self.dungeon_map.spawn("Omnipotent Orc", self.orc)
 
         self.assertTrue(self.dungeon_map.move("Heroic Human", "right"))
-        self.dungeon_map.list_players()
         self.assertEqual(".H##......\n#.##..###.\n#.###.###.\n#.....###.\n###.#####O", self.dungeon_map.print_map())
 
     def test_move_left(self):
         self.dungeon_map = dungeon.Dungeon("dev_map.txt")
-        self.assertEqual(".S##......\n#.##..###.\n#.###.###.\n#.....###.\n###.#####S", self.dungeon_map.print_map())
         self.dungeon_map.spawn("Heroic Human", self.human)
         self.assertTrue(self.dungeon_map.move("Heroic Human", "left"))
-        self.dungeon_map.list_players()
         self.assertEqual("H.##......\n#.##..###.\n#.###.###.\n#.....###.\n###.#####S", self.dungeon_map.print_map())
 
     def test_move_down(self):
@@ -321,27 +318,69 @@ class TestDungeon(unittest.TestCase):
         self.assertEqual(".S##......\n#.##..###.\n#.###.###.\n#.....###.\n###.#####S", self.dungeon_map.print_map())
         self.dungeon_map.spawn("Heroic Human", self.human)
         self.assertTrue(self.dungeon_map.move("Heroic Human", "down"))
-        self.dungeon_map.list_players()
         self.assertEqual("..##......\n#H##..###.\n#.###.###.\n#.....###.\n###.#####S", self.dungeon_map.print_map())
 
     def test_move_up(self):
         self.dungeon_map.spawn("Heroic Human", self.human)
         self.dungeon_map.spawn("Omnipotent Orc", self.orc)
         self.assertTrue(self.dungeon_map.move("Omnipotent Orc", "up"))
-        self.dungeon_map.list_players()
         self.assertEqual("H.##......\n#.##..###.\n#.###.###.\n#.....###O\n###.#####.", self.dungeon_map.print_map())
 
-    def test_move_top_to_obstacle(self):
+    def test_move_right_and_down(self):
+        self.dungeon_map.spawn("Heroic Human", self.human)
+        self.assertTrue(self.dungeon_map.move("Heroic Human", "right"))
+        self.assertTrue(self.dungeon_map.move("Heroic Human", "down"))
+        self.assertEqual("..##......\n#H##..###.\n#.###.###.\n#.....###.\n###.#####S", self.dungeon_map.print_map())
+
+    def test_move_to_2nd_spawn_point(self):
+        self.dungeon_map.spawn("Heroic Human", self.human)
+        self.assertTrue(self.dungeon_map.move("Heroic Human", "right"))
+        self.assertTrue(self.dungeon_map.move("Heroic Human", "down"))
+        self.assertTrue(self.dungeon_map.move("Heroic Human", "down"))
+        self.assertTrue(self.dungeon_map.move("Heroic Human", "down"))
+        self.assertEqual("..##......\n#.##..###.\n#.###.###.\n#H....###.\n###.#####S", self.dungeon_map.print_map())
+
+        self.assertTrue(self.dungeon_map.move("Heroic Human", "right"))
+        self.assertTrue(self.dungeon_map.move("Heroic Human", "right"))
+        self.assertTrue(self.dungeon_map.move("Heroic Human", "right"))
+        self.assertTrue(self.dungeon_map.move("Heroic Human", "right"))
+        self.assertEqual("..##......\n#.##..###.\n#.###.###.\n#....H###.\n###.#####S", self.dungeon_map.print_map())
+
+        self.assertTrue(self.dungeon_map.move("Heroic Human", "up"))
+        self.assertTrue(self.dungeon_map.move("Heroic Human", "up"))
+        self.assertTrue(self.dungeon_map.move("Heroic Human", "up"))
+        self.assertEqual("..##.H....\n#.##..###.\n#.###.###.\n#.....###.\n###.#####S", self.dungeon_map.print_map())
+
+        self.assertTrue(self.dungeon_map.move("Heroic Human", "right"))
+        self.assertTrue(self.dungeon_map.move("Heroic Human", "right"))
+        self.assertTrue(self.dungeon_map.move("Heroic Human", "right"))
+        self.assertTrue(self.dungeon_map.move("Heroic Human", "right"))
+        self.assertEqual("..##.....H\n#.##..###.\n#.###.###.\n#.....###.\n###.#####S", self.dungeon_map.print_map())
+
+        self.assertTrue(self.dungeon_map.move("Heroic Human", "down"))
+        self.assertTrue(self.dungeon_map.move("Heroic Human", "down"))
+        self.assertTrue(self.dungeon_map.move("Heroic Human", "down"))
+        self.assertEqual("..##......\n#.##..###.\n#.###.###.\n#.....###H\n###.#####S", self.dungeon_map.print_map())
+
+        # now human replaces spawn point's position
+        self.assertTrue(self.dungeon_map.move("Heroic Human", "down"))
+        self.assertEqual("..##......\n#.##..###.\n#.###.###.\n#.....###S\n###.#####H", self.dungeon_map.print_map())
+
+    def test_move_top_to_obstacle_with_1_hero_spawned(self):
         self.dungeon_map.spawn("Heroic Human", self.human)
         self.assertFalse(self.dungeon_map.move("Heroic Human", "up"))
 
-    def test_move_right_to_obstacle(self):
+    def test_move_right_to_obstacle_with_2_heroes_spawned(self):
         self.dungeon_map.spawn("Heroic Human", self.human)
         self.dungeon_map.spawn("Omnipotent Orc", self.orc)
         self.assertFalse(self.dungeon_map.move("Omnipotent Orc", "right"))
         self.assertEqual("H.##......\n#.##..###.\n#.###.###.\n#.....###.\n###.#####O", self.dungeon_map.print_map())
 
-    def test_move_left_to_obstacle(self):
+    def test_move_left_to_obstacle_with_1_hero_spawned(self):
+        self.dungeon_map.spawn("Heroic Human", self.human)
+        self.assertFalse(self.dungeon_map.move("Heroic Human", "left"))
+
+    def test_move_left_to_obstacle_with_2_heroes_spawned(self):
         self.dungeon_map.spawn("Heroic Hman", self.human)
         self.dungeon_map.spawn("Omnipotent Orc", self.orc)
         self.assertFalse(self.dungeon_map.move("Omnipotent Orc", "left"))
