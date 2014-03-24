@@ -1,8 +1,10 @@
 # Unit test for Problem 31.5 - Is member of nth fibonacci lists
 
+
 # IMPORTS
 from solution import member_of_nth_fib_lists
 import unittest
+
 
 # main
 class MyTestCase(unittest.TestCase):
@@ -17,6 +19,7 @@ class MyTestCase(unittest.TestCase):
 
     def test_four(self):
         self.assertFalse(member_of_nth_fib_lists([7,11], [2], [11,7,2,2,7]))
+
 
 # PROGRAM RUN
 if __name__ == '__main__':

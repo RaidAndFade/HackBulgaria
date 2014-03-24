@@ -1,8 +1,10 @@
 # Unit test for Problem 8 - Number containing a single digit
 
+
 # IMPORTS
 from solution import contains_digit
 import unittest
+
 
 # main
 class MyTestCase(unittest.TestCase):
@@ -17,6 +19,7 @@ class MyTestCase(unittest.TestCase):
 
     def test_four(self):
         self.assertFalse(contains_digit(12346789, 5))
+
 
 # PROGRAM RUN
 if __name__ == '__main__':

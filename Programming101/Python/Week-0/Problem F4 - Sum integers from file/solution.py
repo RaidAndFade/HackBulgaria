@@ -1,19 +1,25 @@
-# Problem F4 - Sum integers from file
-#
-# Implement a Python script, called sum_numbers.py,
-# which takes one argument - a filename which has integers, separated by " "
-#
-# The script should print the sum of all integers in that file.
-#
-# Examples
-#
-# If we use the generated file from Problem 3:
-#
-# $ python sum_numbers.py numbers.txt
-# 47372
+# Documentation
+# https://github.com/HackBulgaria/Programming101/blob/master/week0/simple_problems3.md#problem-f4---sum-integers-from-file
+
 
 # IMPORTS
 from sys import argv, exit
+
+
+# FUNCTIONS
+def sum_integers_from_file(filename):
+    try:
+        opened_file = open(filename, "r")
+    except IOError:
+        exit("Error: File not found!")
+
+    output_sum = 0
+    for line in opened_file:
+        numbers = line.split()
+        for number in numbers:
+            output_sum += int(number)
+    opened_file.close()
+    return output_sum
 
 
 # main
@@ -22,17 +28,8 @@ def main():
         exit("Error: Invalid number of arguments!")
 
     filename = argv[1]
-    file = ""
-    try:
-        file = open(filename, "r")
-    except IOError:
-        exit("Error: File not found!")
+    print(sum_integers_from_file(filename))
 
-    outputSum = 0
-    for line in file:
-        outputSum += int(line)
-
-    print(outputSum)
 
 # PROGRAM RUN
 if __name__ == '__main__':

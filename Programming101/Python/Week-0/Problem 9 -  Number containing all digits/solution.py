@@ -1,40 +1,21 @@
-# Problem 9 - Number containing all digits?
-#
-# Implement a function, called contains_digits(number, digits),
-# where digits is a list of integers and a number is an integer.
-#
-# The function should return True if all digits are contained by number
-#
-# Signature
-#
-# def contains_digits(number, digits):
-# Implementation
-# Test examples
-#
-# >>> contains_digits(402123, [0, 3, 4])
-# True
-# >>> contains_digits(666, [6,4])
-# False
-# >>> contains_digits(123456789, [1,2,3,0])
-# False
-# >>> contains_digits(456, [])
-# False
+# Documentation
+# https://github.com/HackBulgaria/Programming101/blob/master/week0/simple_problems.md#problem-9---number-containing-all-digits
 
 
 # FUNCTIONS
-def contains_digits(number, listDigits):
-    if len(listDigits) == 0:
+def contains_digits(number, list_digits):
+    if len(list_digits) == 0:
         return False
 
     number = str(number)
 
-    digitsFound = 0
+    digits_found = 0
 
-    for i in range(len(listDigits)):
-            if str(listDigits[i]) in number:
-                digitsFound += 1
+    for i in range(len(list_digits)):
+            if str(list_digits[i]) in number:
+                digits_found += 1
 
-    if digitsFound == len(listDigits):
+    if digits_found == len(list_digits):
         return True
 
     else:
@@ -43,10 +24,11 @@ def contains_digits(number, listDigits):
 
 # main
 def main():
-    print(contains_digits(402123, [0, 3, 4]))
-    print(contains_digits(666, [6, 4]))
-    print(contains_digits(123456789, [1, 2, 3, 0]))
-    print(contains_digits(456, []))
+    contains_digits(402123, [0, 3, 4])
+    contains_digits(666, [6, 4])
+    contains_digits(123456789, [1, 2, 3, 0])
+    contains_digits(456, [])
+
 
 # PROGRAM RUN
 if __name__ == '__main__':

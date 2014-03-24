@@ -1,35 +1,5 @@
-# Problem 7 - Integer Palindromes
-#
-# A palindrome is а word or a phrase or a number,
-# that when reversed, stays the same.
-#
-# For example, the following sequences are palindromes: "azobi4amma4iboza" or "anna".
-#
-# But this time, we are not interested in words but numbers.
-# A number palindrome is a number, that taken backwards, remains the same.
-#
-# For example, the numbers 1, 4224, 9999, 1221 are number palindromes.
-#
-# Implement a function, called is_int_palindrome(n) which takes an integer
-# and returns True, if this integer is a palindrome.
-#
-# Signature
-#
-# def is_int_palindrome(n):
-#     # implementation
-#
-# Test examples
-#
-# >>> is_int_palindrome(1)
-# True
-# >>> is_int_palindrome(42)
-# False
-# >>> is_int_palindrome(100001)
-# True
-# >>> is_int_palindrome(999)
-# True
-# >>> is_int_palindrome(123)
-# False
+# Documentation
+# https://github.com/HackBulgaria/Programming101/blob/master/week0/simple_problems.md#problem-7---integer-palindromes
 
 
 # FUNCTIONS
@@ -38,10 +8,10 @@ def is_int_palindrome(number):
     if len(number) <= 1:
         return True
 
-    firstLetter = number[0]
-    lastLetter = number[-1]
+    first_letter = number[0]
+    last_letter = number[-1]
 
-    if firstLetter == lastLetter:
+    if first_letter == last_letter:
         end = len(number) - 2 + 1
         return is_int_palindrome(number[1:end])
 
@@ -51,11 +21,12 @@ def is_int_palindrome(number):
 
 # main
 def main():
-    print(is_int_palindrome(1))
-    print(is_int_palindrome(42))
-    print(is_int_palindrome(100001))
-    print(is_int_palindrome(999))
-    print(is_int_palindrome(123))
+    is_int_palindrome(1)
+    is_int_palindrome(42)
+    is_int_palindrome(100001)
+    is_int_palindrome(999)
+    is_int_palindrome(123)
+
 
 # PROGRAM RUN
 if __name__ == '__main__':

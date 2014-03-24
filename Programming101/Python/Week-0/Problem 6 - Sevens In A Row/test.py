@@ -1,5 +1,6 @@
 # Unit test for Problem 6 - Sevens in A Row
 
+
 # IMPORTS
 from solution import sevens_in_a_row
 import unittest
@@ -18,6 +19,7 @@ class MyTestCase(unittest.TestCase):
 
     def test_four(self):
         self.assertTrue(sevens_in_a_row([7, 2, 1, 6, 2], 1))
+
 
 # PROGRAM RUN
 if __name__ == '__main__':

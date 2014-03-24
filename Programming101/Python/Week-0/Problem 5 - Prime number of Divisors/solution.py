@@ -1,22 +1,5 @@
-# Problem 5
-#
-# Given an integer, write a function, called prime_number_of_divisors(n) which returns True if the number of divisors of n is a prime number. False otherwise.
-#
-# For example, the divisors of 8 are 1,2,4 and 8, a total of 4. 4 is not a prime. The divisors of 9 are 1,3 and 9, a total of 3, which is a prime number.
-#
-# Signature
-#
-#     def prime_number_of_divisors(n):
-#         # Implementation
-#
-# Test examples
-#
-#     >>> prime_number_of_divisors(7)
-#     True
-#     >>> prime_number_of_divisors(8)
-#     False
-#     >>> prime_number_of_divisors(9)
-#     True
+# Documentation
+# https://github.com/HackBulgaria/Programming101/blob/master/week0/simple_problems.md#problem-5---check-if-a-number-has-a-prime-number-of-divisors
 
 
 # FUNCTIONS
@@ -48,9 +31,10 @@ def prime_number_of_divisors(number):
 
 # main
 def main():
-    print(prime_number_of_divisors(7))
-    print(prime_number_of_divisors(8))
-    print(prime_number_of_divisors(9))
+    prime_number_of_divisors(7)
+    prime_number_of_divisors(8)
+    prime_number_of_divisors(9)
+
 
 # PROGRAM RUN
 if __name__ == '__main__':

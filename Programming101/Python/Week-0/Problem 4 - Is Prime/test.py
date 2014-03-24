@@ -1,5 +1,6 @@
 # Unit test for Problem 4 - Is Prime
 
+
 # IMPORTS
 from solution import is_prime
 import unittest
@@ -22,6 +23,7 @@ class MyTestCase(unittest.TestCase):
 
     def test_is_prime_minus_ten(self):
         self.assertFalse(is_prime(-10))
+
 
 # PROGRAM RUN
 if __name__ == '__main__':

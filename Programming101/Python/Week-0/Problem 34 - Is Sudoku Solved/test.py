@@ -1,5 +1,6 @@
 # Unit test for Problem 34 - Is sudoku solved
 
+
 # IMPORTS
 from solution import sudoku_solved
 import unittest
@@ -29,6 +30,7 @@ class MyTestCase(unittest.TestCase):
                                         [1, 2, 3, 4, 5, 6, 7, 8, 9],
                                         [1, 2, 3, 4, 5, 6, 7, 8, 9],
                                         [1, 2, 3, 4, 5, 6, 7, 8, 9]]))
+
 
 # PROGRAM RUN
 if __name__ == '__main__':

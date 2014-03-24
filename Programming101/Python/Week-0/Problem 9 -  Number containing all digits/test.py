@@ -1,8 +1,10 @@
 # Unit test for Problem 9 - Number containing all digits
 
+
 # IMPORTS
 from solution import contains_digits
 import unittest
+
 
 # main
 class MyTestCase(unittest.TestCase):
@@ -17,6 +19,7 @@ class MyTestCase(unittest.TestCase):
 
     def test_four(self):
         self.assertFalse(contains_digits(456, []))
+
 
 # PROGRAM RUN
 if __name__ == '__main__':

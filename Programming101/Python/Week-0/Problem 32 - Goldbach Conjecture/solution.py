@@ -1,39 +1,5 @@
-# Problem 32 - Goldbach Conjecture
-# Implement a function, called goldbach(n) which returns a list of tupples,
-# that is the goldbach conjecture for the given number n
-#
-# The Goldbach Conjecture states:
-# Every even integer greater than 2 can be expressed as the sum of two primes.
-# Keep in mind that there can be more than one combination of two primes,
-# that sums up to the given number.
-#
-# The result should be sorted by the first item in the tuple.
-#
-# For example:
-#
-#     4 = 2 + 2
-#     6 = 3 + 3
-#     8 = 3 + 5
-#     10 = 3 + 7 = 5 + 5
-#     100 = 3 + 97 = 11 + 89 = 17 + 83 = 29 + 71 = 41 + 59 = 47 + 53
-#
-# Signature
-#
-#     def goldbach(n):
-#         # Implementation
-#
-# Test examples
-#
-#     >>> goldbach(4)
-#     [(2,2)]
-#     >>> goldbach(6)
-#     [(3,3)]
-#     >>> goldbach(8)
-#     [(3,5)]
-#     >>> goldbach(10)
-#     [(3,7), (5,5)]
-#     >>> goldbach(100)
-#     [(3, 97), (11, 89), (17, 83), (29, 71), (41, 59), (47, 53)]
+# Documentation
+# https://github.com/HackBulgaria/Programming101/blob/master/week0/simple_problems2.md#problem-32---goldbach-conjecture
 
 
 # FUNCTIONS
@@ -70,11 +36,11 @@ def goldbach(n):
 
 # main
 def main():
-    print(goldbach(4))
-    print(goldbach(6))
-    print(goldbach(8))
-    print(goldbach(10))
-    print(goldbach(100))
+    goldbach(4)
+    goldbach(6)
+    goldbach(8)
+    goldbach(10)
+    goldbach(100)
 
 
 # PROGRAM RUN
