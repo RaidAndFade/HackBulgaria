@@ -1,3 +1,2 @@
-<h1>HackBulgaria</h1>
-============
-<h3><a href="https://github.com/syndbg/HackBulgaria/tree/master/Programming101">Programming 101</a></h3>
+## HackBulgaria
+### [Curriculum(in bulgarian)](http://blog.hackbulgaria.com/podroben-konspekt-za-programirane-101/)
