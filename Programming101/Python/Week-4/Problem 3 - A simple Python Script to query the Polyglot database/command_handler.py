@@ -18,38 +18,32 @@ class CommandHandler():
         return command_tuple[0] == command_string
 
     def trigger_list_employees(self):
-        sql_query = "SELECT id, name, position FROM employees;"
         output = []
-        for person_id, name, position in self.cursor.execute(sql_query):
+        for person_id, name, position in self.cursor.execute("SELECT id, name, position FROM employees;"):
             output.append("[{}] {} - {}".format(person_id, name, position))
         return "\n".join(output)
 
     def trigger_monthly_spending(self):
-        sql_query = "SELECT monthly_salary FROM employees;"
-        output_sum = 0
-        for person_salary in self.cursor.execute(sql_query):
-            output_sum += int(person_salary[0])
-        return output_sum
+        return self.cursor.execute("SELECT SUM(monthly_salary) FROM employees;").fetchone()[0]
 
     def trigger_yearly_spending(self):
-        return self.trigger_monthly_spending() * 12
+        return self.trigger_monthly_spending() * 12 + self.cursor.execute("SELECT SUM(yearly_bonus) FROM employees;").fetchone()[0]
 
     def trigger_add_employee(self):
-        name = str(input("name>"))
-        monthly_salary = str(input("monthly_salary>"))
-        yearly_bonus = str(input("yearly_bonus>"))
-        position = str(input("position>"))
-        sql_query = "INSERT INTO employees(name, monthly_salary, yearly_bonus, position) VALUES (?, ?, ?, ?)"
+        name = input("name>")
+        monthly_salary = input("monthly_salary>")
+        yearly_bonus = input("yearly_bonus>")
+        position = input("position>")
+        sql_query = "INSERT INTO employees(name, monthly_salary, yearly_bonus, position) VALUES (?, ?, ?, ?);"
         self.cursor.execute(sql_query, (name, monthly_salary, yearly_bonus, position))
         self.conn.commit()
+        return "{} was added.".format(name)
 
     def trigger_delete_employee(self, employee_id):
-        sql_query = "SELECT name FROM employees WHERE id=?"
-        name = self.cursor.execute(sql_query, employee_id).fetchone()
-        sql_query = "DELETE FROM employees WHERE id=?"
-        self.cursor.execute(sql_query, employee_id)
+        name = self.cursor.execute("SELECT name FROM employees WHERE id=?;", (employee_id,)).fetchone()[0]
+        self.cursor.execute("DELETE FROM employees WHERE id=?;", (employee_id,))
         self.conn.commit()
-        return "{} was deleted.".format(name[0])
+        return "{} was deleted.".format(name)
 
     def trigger_update_employee(self, employee_id):
         name = str(input("name>"))
@@ -61,13 +55,14 @@ class CommandHandler():
         self.conn.commit()
 
     def trigger_help(self):
-        help_message = ["list_employees - Prints out all employees, in the following format - \"name - position\"",
+        help_message = ("list_employees - Prints out all employees, in the following format - \"name - position\"",
                         "monthly_spending - Prints out the total sum for monthly spending that the company is doing for salaries",
                         "yearly_spending - Prints out the total sum for one year of operation (Again, salaries)",
+                        "add_employee, the program starts to promt for data, to create a new employee.",
                         "delete_employee <employee_id>, the program should delete the given employee from the database",
-                        "update_employee <employee_id>, the program should prompt the user to change each of the fields for the given"]
+                        "update_employee <employee_id>, the program should prompt the user to change each of the fields for the given")
         return "\n".join(help_message)
 
     def trigger_unknown_command(self):
-        unknown_command_mesage = ["Unknown command!", "Why don't you enter help to see the available commands?"]
+        unknown_command_mesage = ("Unknown command!", "Why don't you enter help to see the available commands?")
         return "\n".join(unknown_command_mesage)

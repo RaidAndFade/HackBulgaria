@@ -2,6 +2,8 @@
 
 
 # IMPORTS
+from create_database import create_database
+from os import remove
 import command_handler
 import unittest
 
@@ -9,10 +11,11 @@ import unittest
 # main
 class CommandHandlerTest(unittest.TestCase):
     def setUp(self):
-        self.test_interface = command_handler.CommandHandler("polyglot.db")
+        create_database("tests.db")
+        self.test_interface = command_handler.CommandHandler("tests.db")
 
     def test_trigger_help(self):
-        self.assertEqual("list_employees - Prints out all employees, in the following format - \"name - position\"\nmonthly_spending - Prints out the total sum for monthly spending that the company is doing for salaries\nyearly_spending - Prints out the total sum for one year of operation (Again, salaries)\ndelete_employee <employee_id>, the program should delete the given employee from the database\nupdate_employee <employee_id>, the program should prompt the user to change each of the fields for the given", self.test_interface.trigger_help())
+        self.assertEqual("list_employees - Prints out all employees, in the following format - \"name - position\"\nmonthly_spending - Prints out the total sum for monthly spending that the company is doing for salaries\nyearly_spending - Prints out the total sum for one year of operation (Again, salaries)\nadd_employee, the program starts to promt for data, to create a new employee.\ndelete_employee <employee_id>, the program should delete the given employee from the database\nupdate_employee <employee_id>, the program should prompt the user to change each of the fields for the given", self.test_interface.trigger_help())
 
     def test_trigger_unknown_command(self):
         self.assertEqual("Unknown command!\nWhy don't you enter help to see the available commands?", self.test_interface.trigger_unknown_command())
@@ -37,16 +40,17 @@ class CommandHandlerTest(unittest.TestCase):
         self.assertEqual(26500, self.test_interface.trigger_monthly_spending())
 
     def test_trigger_yearly_spending(self):
-        self.assertEqual(26500 * 12, self.test_interface.trigger_yearly_spending())
+        self.assertEqual(439000, self.test_interface.trigger_yearly_spending())
 
-    def test_trigger_add_employee(self):
-        self.test_interface.trigger_add_employee()
+    # def test_trigger_add_employee(self):
+    #     self.assertEqual("Beer was added", self.test_interface.trigger_add_employee())
 
     def test_trigger_delete_employee(self):
-        self.test_interface.trigger_delete_employee(1)
+        self.assertEqual("Ivan Ivanov was deleted.", self.test_interface.trigger_delete_employee(1))
 
-    def test_trigger_update_employee(self):
-        self.test_interface.trigger_update_employee(2)
+    def tearDown(self):
+        remove("tests.db")
+
 
 # PROGRAM RUN
 if __name__ == '__main__':
