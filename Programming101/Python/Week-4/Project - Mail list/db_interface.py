@@ -1,6 +1,12 @@
+# Database interface for mail.py
+
+
+# IMPORTS
 import sqlite3
+import json
 
 
+# FUNCTIONS
 def dict_factory(cursor, row):
     d = {}
     for idx, col in enumerate(cursor.description):
@@ -109,3 +115,8 @@ class DBInterface():
             self.dict_cursor.execute(query, data)
         self.conn.commit()
         return True
+
+    def export_json(self, list_id):
+        query = "SELECT subscribers.id, subscribers.name, subscribers.email FROM subscribers INNER JOIN maillists_to_subscribers ON subscribers.id = maillists_to_subscribers.subscriber_id WHERE maillists_to_subscribers.maillist_id = ?;"
+        data = self.dict_cursor.execute(query, (list_id,)).fetchall()
+        return json.dumps(data, indent=4, sort_keys=True)

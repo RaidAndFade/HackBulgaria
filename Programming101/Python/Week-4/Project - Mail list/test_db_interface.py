@@ -135,6 +135,10 @@ class DbInterfaceTests(unittest.TestCase):
         self.assertEqual(self.maillists, self.dbi.fetch_maillists())
         self.assertEqual(expected, self.dbi.fetch_subscribers(3))
 
+    def test_export_json_HackBulgaria(self):
+        expected = "[\n    {\n        \"email\": \"radorado@hackbulgaria.com\",\n        \"id\": 1,\n        \"name\": \"RadoRado\"\n    },\n    {\n        \"email\": \"ivo@hackbulgaria.com\",\n        \"id\": 2,\n        \"name\": \"IvoIvo\"\n    }\n]"
+        self.assertEqual(expected, self.dbi.export_json(1))
+
     def tearDown(self):
         remove("tests.db")
 

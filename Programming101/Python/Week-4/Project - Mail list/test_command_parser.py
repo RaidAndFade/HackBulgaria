@@ -1,3 +1,7 @@
+# Unit tests for command_parse.py
+
+
+# IMPORTS
 import unittest
 from commandparser import CommandParser
 

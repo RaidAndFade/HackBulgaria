@@ -11,3 +11,7 @@ After this, it's time for some refactoring in teams:
 * Implement the rest of the functionality
 
 Everything should be done in OOP way with Test Driven Development approach in teams of 2.
+
+## How to run it:
+Please run ``create_database.py`` and create a database named ``mail_lists.db``
+Afterwards run ``mail.py`` and type ``help`` to see available commands.

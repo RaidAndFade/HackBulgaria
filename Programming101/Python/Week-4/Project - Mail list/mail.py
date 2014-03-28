@@ -1,3 +1,4 @@
+# IMPORTS
 from commandparser import CommandParser
 from sys import exit
 import db_interface
@@ -100,6 +101,15 @@ class MailListProgram():
         self.db.merge_lists(list_id_a, list_id_b, new_list_name)
         return "Merged lists with ids {} and {} to <{}>".format(list_id_a, list_id_b,new_list_name)
 
+    def export_json_callback(self, arguments):
+        list_id = arguments[0]
+        json_contents = self.db.export_json(list_id)
+        list_name = self.db.fetch_maillist_name_by_id(list_id)["name"].replace(" ", "_")
+        file_name = "{}.json".format(list_name)
+        opened_file = open(file_name, "w")
+        opened_file.write(json_contents)
+        opened_file.close()
+        return "{} exported to {}".format(list_name, file_name)
 
     def help_callback(self, arguments):
         output_message = ("Here is a full list of commands:",
@@ -131,6 +141,7 @@ class MailListProgram():
         self.cp.on("update", self.update_mail_list_name_callback)
         self.cp.on("search_email", self.search_email_callback)
         self.cp.on("merge_lists", self.merge_lists_callback)
+        self.cp.on("export_json", self.export_json_callback)
         self.cp.on("exit", self.exit_callback)
         self.cp.on("help", self.help_callback)
 
@@ -140,5 +151,6 @@ class MailListProgram():
             self.cp.take_command(command)
 
 
+# PROGRAM RUN
 if __name__ == '__main__':
     MailListProgram()

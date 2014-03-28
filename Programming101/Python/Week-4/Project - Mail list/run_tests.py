@@ -1,3 +1,7 @@
+# Runs all unit tests
+
+
+# IMPORTS
 import glob
 import unittest
 
