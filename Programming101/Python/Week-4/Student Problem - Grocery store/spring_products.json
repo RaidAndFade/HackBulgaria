@@ -1,0 +1,27 @@
+[
+    {
+        "name": "Potatoes",
+        "price_per_kg": 1.2,
+        "quantity_in_kg": 20
+    },
+    {
+        "name": "Carrots",
+        "price_per_kg": 1.1,
+        "quantity_in_kg": 6
+    },
+    {
+        "name": "Cucumbers",
+        "price_per_kg": 2.2,
+        "quantity_in_kg": 3
+    },
+    {
+        "name": "Lettuce",
+        "price_per_kg": 2.1,
+        "quantity_in_kg": 7
+    },
+    {
+        "name": "Tomatoes",
+        "price_per_kg": 2.7,
+        "quantity_in_kg": 10
+    }
+]
