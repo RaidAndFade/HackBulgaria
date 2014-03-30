@@ -49,67 +49,66 @@
 from sys import argv, exit
 
 
+# FUNCTIONS
+def count_chars(filename):
+    chars_count = 0
+    try:
+        opened_file = open(filename, "r")
+    except IOError:
+        return "Error: File not found!"
+
+    for line in opened_file:
+        chars_count += len(line)
+    opened_file.close()
+    return chars_count
+
+
+def count_words(filename):
+    words_list = []
+    try:
+        opened_file = open(filename, "r")
+    except IOError:
+        return "Error: File not found!"
+
+    for line in opened_file:
+        line = line.split()
+        for word in line:
+            words_list.append(word)
+    opened_file.close()
+    return len(words_list)
+
+
+def count_lines(filename):
+    try:
+        opened_file = open(filename, "r")
+    except IOError:
+        return "Error: File not found!"
+
+    contents = opened_file.read()
+    # count the first line + the rest
+    num_lines = contents.count("\n") + 1
+    opened_file.close()
+    return num_lines
+
+
 # main
 def main():
     if len(argv) != 3:
         exit("Invalid number of arguments")
 
-    # count chars
+    filename = argv[2]
     if argv[1] == "chars":
-        charsCount = 0
+        print(count_chars(filename))
 
-        filename = argv[2]
-        file = ""
-
-        try:
-            file = open(filename, "r")
-        except IOError:
-            exit("Error: File not found!")
-
-        for line in file:
-            line = line.strip()
-            charsCount += len(line)
-
-        print(charsCount)
-
-    # count words
     elif argv[1] == "words":
-        wordsList = []
+        print(count_words(filename))
 
-        filename = argv[2]
-        file = ""
-
-        try:
-            file = open(filename, "r")
-        except IOError:
-            exit("Error: File not found!")
-
-        for line in file:
-            line = line.rsplit()
-            for word in line:
-                wordsList.append(word)
-
-        print(len(wordsList))
-
-    # count lines
     elif argv[1] == "lines":
-        numLines = 0
-
-        filename = argv[2]
-        file = ""
-
-        try:
-            file = open(filename, "r")
-        except IOError:
-            exit("Error: File not found!")
-
-        for line in file:
-            numLines += 1
-
-        print(numLines)
+        print(count_lines(filename))
 
     else:
         exit("Invalid command given")
+
 
 # PROGRAM RUN
 if __name__ == '__main__':

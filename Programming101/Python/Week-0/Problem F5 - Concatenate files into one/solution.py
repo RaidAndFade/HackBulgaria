@@ -3,7 +3,7 @@
 # Implement a Python script, called concat_files.py,
 # that takes multiple filenames as arguments.
 #
-# The script should concatenate all file contents into a single file, 
+# The script should concatenate all file contents into a single file,
 # called MEGATRON (Capslock is by choice :D)
 #
 # Every time you run the script, do not delete the old contents of MEGATRON,
@@ -44,23 +44,31 @@
 from sys import argv, exit
 
 
+# FUNCTIONS
+def concatenate(files):
+    output_content = ""
+    for filename in files:
+        try:
+            opened_file = open(filename, "r")
+        except IOError:
+            return "Error: File not found!"
+        output_content += "{}\n".format(opened_file.read())
+        opened_file.close()
+    return output_content.rstrip()
+
+
+def write_to_megatron(content):
+    megatron = open("MEGATRON", "w")
+    megatron.write(content)
+    megatron.close()
+
+
 # main
 def main():
     if len(argv) == 1:
         exit("Invalid number of arguments")
+    write_to_megatron(concatenate(argv[1:]))
 
-    MEGATRON = open("MEGATRON.txt", "w")
-
-    for i in range(1, len(argv)):
-        filename = argv[i]
-        file = ""
-        try:
-            file = open(filename, "r")
-        except IOError:
-            exit("Error: File not found!")
-        content = file.read()
-        MEGATRON.write(content)
-        MEGATRON.write("\n")
 
 # PROGRAM RUN
 if __name__ == '__main__':
