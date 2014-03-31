@@ -34,15 +34,26 @@ class CommandHandler():
         monthly_salary = input("monthly_salary>")
         yearly_bonus = input("yearly_bonus>")
         position = input("position>")
-        sql_query = "INSERT INTO employees(name, monthly_salary, yearly_bonus, position) VALUES (?, ?, ?, ?);"
-        self.cursor.execute(sql_query, (name, monthly_salary, yearly_bonus, position))
-        self.conn.commit()
+        self.add_employee(name, monthly_salary, yearly_bonus, position)
         return "{} was added.".format(name)
 
-    def trigger_delete_employee(self, employee_id):
-        name = self.cursor.execute("SELECT name FROM employees WHERE id=?;", (employee_id,)).fetchone()[0]
-        self.cursor.execute("DELETE FROM employees WHERE id=?;", (employee_id,))
+    def add_employee(self, name, monthly_salary, yearly_bonus, position):
+        try:
+            sql_query = "INSERT INTO employees(name, monthly_salary, yearly_bonus, position) VALUES (?, ?, ?, ?);"
+        except sqlite3.IntegrityError:
+            return False
+        self.cursor.execute(sql_query, (name, monthly_salary, yearly_bonus, position))
         self.conn.commit()
+        return True
+
+    def trigger_delete_employee(self, employee_id):
+        try:
+            name = self.cursor.execute("SELECT name FROM employees WHERE id=?;", (employee_id,)).fetchone()[0]
+            self.cursor.execute("DELETE FROM employees WHERE id=?;", (employee_id,))
+            self.conn.commit()
+        except Exception:
+            self.conn.rollback()
+            return False
         return "{} was deleted.".format(name)
 
     def trigger_update_employee(self, employee_id):

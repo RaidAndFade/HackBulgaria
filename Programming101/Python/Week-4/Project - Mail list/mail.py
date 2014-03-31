@@ -13,7 +13,7 @@ class MailListProgram():
         self._loop()
 
     def create_list_callback(self, arguments):
-        name = " ".join(arguments)
+        name = " ".join(arguments)s
         if self.db.create_maillist(name) is True:
             return "<{}> was created.".format(name)
         else:

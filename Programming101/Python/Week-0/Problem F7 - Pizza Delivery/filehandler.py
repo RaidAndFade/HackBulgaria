@@ -79,7 +79,6 @@ class FileHandler():
         for line in contents:
             line = line.strip()
             line = line.split("-")
-            print(line)
             self.take_order(line[0], int(line[1]))
 
     def fetch_history(self):

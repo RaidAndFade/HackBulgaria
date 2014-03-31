@@ -42,11 +42,18 @@ class CommandHandlerTest(unittest.TestCase):
     def test_trigger_yearly_spending(self):
         self.assertEqual(439000, self.test_interface.trigger_yearly_spending())
 
-    # def test_trigger_add_employee(self):
-    #     self.assertEqual("Beer was added", self.test_interface.trigger_add_employee())
+    def test_add_employee(self):
+        self.assertTrue(self.test_interface.add_employee("Beer", 2000, 1, "Fuel"))
+
+    def test_add_existing_employee(self):
+        self.assertFalse(self.test_interface.add_employee("Ivan Ivanov", 5000, 10000, "Software Developer"))
 
     def test_trigger_delete_employee(self):
         self.assertEqual("Ivan Ivanov was deleted.", self.test_interface.trigger_delete_employee(1))
+
+    def test_trigger_delete_non_existing_employee(self):
+        self.assertEqual("Ivan Ivanov was deleted.", self.test_interface.trigger_delete_employee(1))
+        self.assertFalse(self.test_interface.trigger_delete_employee(1))
 
     def tearDown(self):
         remove("tests.db")

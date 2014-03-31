@@ -51,19 +51,18 @@ def create_database(database_name):
             "position": "COO"
         }]
 
-    conn = sqlite3.connect(database_name)
-    c = conn.cursor()
+    db = sqlite3.connect(database_name)
+    cursor = db.cursor()
     try:
-        create_tables(c)
+        create_tables(cursor)
     except Exception:
         print("Error:Table employees already exists!")
         return 1
 
     for item in data:
-        insert(item, c)
-
-    conn.commit()
-    conn.close()
+        insert(item, cursor)
+    db.commit()
+    db.close()
 
 
 def main():
