@@ -6,7 +6,6 @@
 from local_config import github_username
 from local_config import github_password
 from os.path import splitext
-import remotezip
 import requests
 import zipfile
 import io
