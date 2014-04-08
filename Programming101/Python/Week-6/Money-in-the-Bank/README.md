@@ -14,7 +14,7 @@ last failed login and current login attempt.
 
 
 ## How to use:
-Run with python3, start.py and use the <help> command.
+Run with python3, start.py and use the ``help`` command.
 
 ## Dependancies:
 Python3
