@@ -22,6 +22,18 @@ class ClientTests(unittest.TestCase):
     def test_client_message(self):
         self.assertEqual(self.test_client.get_message(), "Bitcoin mining makes me rich")
 
+    def test_deposit(self):
+        self.test_client.deposit(500)
+        self.assertEqual(200500.00, self.test_client.get_balance())
+
+    def test_withdraw(self):
+        self.test_client.withdraw(200000)
+        self.assertEqual(0, self.test_client.get_balance())
+
+    def test_withdraw_more_than_available(self):
+        self.test_client.withdraw(210000)
+        self.assertEqual(0, self.test_client.get_balance())
+
 
 if __name__ == '__main__':
     unittest.main()

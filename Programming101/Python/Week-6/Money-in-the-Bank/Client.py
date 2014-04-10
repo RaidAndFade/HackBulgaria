@@ -19,3 +19,11 @@ class Client():
 
     def set_message(self, new_message):
         self.__message = new_message
+
+    def deposit(self, amount):
+        self.__balance += amount
+
+    def withdraw(self, amount):
+        self.__balance -= amount
+        if self.__balance < 0:
+            self.__balance = 0

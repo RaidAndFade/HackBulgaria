@@ -22,11 +22,48 @@ def create_clients_table():
         resetcodes(username TEXT PRIMARY KEY,
                     code TEXT);'''
     cursor.execute(create_query)
+    create_query = '''CREATE TABLE IF NOT EXISTS
+        tancodes(username TEXT,
+                    code TEXT);'''
+    cursor.execute(create_query)
+
+
+def add_tan_code(username, tan_code):
+    cursor.execute("INSERT INTO tancodes VALUES(?, ?);", (username, tan_code))
+    conn.commit()
+
+
+def delete_tan_code(username, tan_code):
+    cursor.execute("DELETE FROM tancodes WHERE username = ? and code = ?;", (username, tan_code))
+    conn.commit()
+
+
+def delete_tan_codes(username):
+    cursor.execute("DELETE FROM tancodes WHERE username = ?;", (username,))
+    conn.commit()
+
+
+def get_tan_code(username):
+    return cursor.execute("SELECT code FROM tancodes WHERE username = ?;", (username,)).fetchone()[0]
 
 
 def add_reset_code(username, reset_code):
     cursor.execute("INSERT OR REPLACE INTO resetcodes VALUES(?, ?);", (username, reset_code))
     conn.commit()
+
+
+def are_available_tan_codes(username):
+    if cursor.execute("SELECT Count(*) FROM tancodes WHERE username = ?;", (username,)).fetchone()[0] > 0:
+        return True
+    return False
+
+
+def get_all_tan_codes(username):
+    codes = cursor.execute("SELECT code FROM tancodes WHERE username = ?;", (username,)).fetchall()
+    output = []
+    for row in codes:
+        output.append(row[0])
+    return output
 
 
 def get_reset_code(username):
@@ -47,7 +84,7 @@ def reset_failed_login(username):
 
 
 def reset_failed_logins():
-    cursor.execute("UPDATE clients SET attempts = 0, time = 0;", (username,))
+    cursor.execute("UPDATE clients SET attempts = 0, time = 0;")
     conn.commit()
 
 
@@ -61,6 +98,11 @@ def get_attempts(username):
 
 def get_email(username):
     return cursor.execute("SELECT email FROM clients WHERE username = ?;", (username,)).fetchone()[0]
+
+
+def update_balance(new_balance, username):
+    cursor.execute("UPDATE clients SET balance = ? WHERE username = ?", (new_balance, username))
+    conn.commit()
 
 
 def change_message(new_message, logged_user):
