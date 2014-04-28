@@ -17,6 +17,7 @@ def randomCharacter(characters):
     rand = randint(0, lenChars - 1)
     return characters[rand]
 
+
 ## Inserts one string into another at a random position.
 # @param string the string to insert into
 # @param toInsert the string to be inserted
