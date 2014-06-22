@@ -16,22 +16,18 @@ public class Logger {
         return this.level;
     }
     
-    public void setLevel(int level) throws InvalidLevelException {
+    public void setLevel(int level) {
         if (level <= 0) {
             throw new InvalidLevelException("Importance level must be a positive number.");
         }
         this.level = level;
     }
 
-    public void log(String message) throws InvalidLevelException {
-        if (this.level >= 3) {
-            System.out.println(message);
-        } else {
-            throw new InvalidLevelException("Importance level must be a positive number.");
-        }
+    public void log(String message) {
+        this.log(DEFAULT_LEVEL, message);
     }
 
-    public void log(int level, String message) throws InvalidLevelException {
+    public void log(int level, String message) {
         if (this.level >= DEFAULT_LEVEL && level <= this.level) {
             System.out.println(message);
         } else {
@@ -40,7 +36,7 @@ public class Logger {
     }
 
     @SuppressWarnings("serial")
-    public class InvalidLevelException extends Exception {
+    public class InvalidLevelException extends RuntimeException {
         public InvalidLevelException() {
             super();
         }
