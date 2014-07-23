@@ -6,25 +6,27 @@ import java.util.Stack;
 public class Calculator {
     public static void calculate(String expression) {
         expression = expression.replaceAll("\\s+", "");
-        Stack<Integer> numstack = new Stack<Integer>();
+        Stack<Double> numstack = new Stack<Double>();
         Stack<Character> opstack = new Stack<Character>();
         int pos = 0;
         try {
             while (pos < expression.length()) {
                 char ch = expression.charAt(pos);
                 pos += 1;
-                if (isOperator(ch)) {
-                    if (opstack.size() == 0) {
-                        opstack.push(ch);
-                    } else {
-                        char previousOp = opstack.pop();
-                        if (precedence(ch) > precedence(previousOp)) {
-                            opstack.push(previousOp);
-                        } else {
-                            evaluateTop(numstack, previousOp);
-                        }
-                        opstack.push(ch);
+                if (Character.isDigit(ch) || (ch == '-' && Character.isDigit(expression.charAt(pos)))) {
+                    int start = pos - 1;
+                    while (pos < expression.length()
+                            && (Character.isDigit(expression.charAt(pos)) || expression.charAt(pos) == '.')) {
+                        pos += 1;
                     }
+                    String number = expression.substring(start, pos);
+                    String parsedNumber = number.replaceAll("\\.+", ".");
+                    try {
+                        numstack.push(Double.parseDouble(parsedNumber));
+                    } catch (NumberFormatException e) {
+                        printError("Invalid number: " + parsedNumber);
+                    }
+
                 } else if (ch == '(') {
                     opstack.push(ch);
                 } else if (ch == ')') {
@@ -40,13 +42,18 @@ public class Calculator {
                             evaluateTop(numstack, previousOp);
                         }
                     }
-                } else if (Character.isDigit(ch)) {
-                    int start = pos - 1;
-                    while (pos < expression.length() && Character.isDigit(expression.charAt(pos))) {
-                        pos += 1;
+                } else if (isOperator(ch)) {
+                    if (opstack.size() == 0) {
+                        opstack.push(ch);
+                    } else {
+                        char previousOp = opstack.pop();
+                        if (precedence(ch) > precedence(previousOp)) {
+                            opstack.push(previousOp);
+                        } else {
+                            evaluateTop(numstack, previousOp);
+                        }
+                        opstack.push(ch);
                     }
-                    String number = expression.substring(start, pos);
-                    numstack.push(Integer.parseInt(number));
                 } else {
                     printError("Number, operator or parenthesis expected.");
                 }
@@ -79,7 +86,8 @@ public class Calculator {
 
     public static void printError(String message) {
         System.out.println("ERROR! " + message);
-        System.exit(1);;
+        System.exit(1);
+        ;
     }
 
     public static int precedence(char ch) {
@@ -94,19 +102,19 @@ public class Calculator {
         }
     }
 
-    public static void evaluateTop(Stack<Integer> stack, char operator) {
+    public static void evaluateTop(Stack<Double> stack, char operator) {
         if (stack.size() == 0) {
             printError("Invalid expression");
         }
-        int y = stack.pop();
+        double y = stack.pop();
         if (stack.size() == 0 && operator != '!') {
             printError("Invalid expression");
         }
-        int x = 0;
+        double x = 0;
         if (operator != '!') {
             x = stack.pop();
         }
-        int z = 0;
+        double z = 0;
         if (operator == '*') {
             z = x * y;
         } else if (operator == '/') {
@@ -125,7 +133,7 @@ public class Calculator {
                 z *= i;
             }
         } else if (operator == '^') {
-            z = (int) Math.pow(x, y);
+            z = Math.pow(x, y);
         } else {
             printError("Syntax error");
         }
