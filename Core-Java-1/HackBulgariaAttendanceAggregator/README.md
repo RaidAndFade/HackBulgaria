@@ -17,7 +17,7 @@ java -jar build/attendance.jar
 
 If you want only the attendance.jar
 ```
-wget https://github.com/syndbg/HackBulgaria/blob/master/Core-Java-1/HackBulgariAttendanceAggregator/build/attendance.jar
+wget https://github.com/syndbg/HackBulgaria/blob/master/Core-Java-1/HackBulgariaAttendanceAggregator/build/attendance.jar
 java -jar attendance.jar
 ```
 
