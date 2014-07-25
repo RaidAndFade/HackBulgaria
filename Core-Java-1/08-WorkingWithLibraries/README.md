@@ -15,7 +15,7 @@ java -jar build/emailComposer.jar
 ```
 
 
-If you want only the jars
+If you want only the jar
 ```
 wget https://github.com/syndbg/HackBulgaria/blob/master/Core-Java-1/08-WorkingWithLibraries/build/emailComposer.jar?raw=true -O emailComposer.jar
 java -jar emailComposer.jar
