@@ -3,6 +3,7 @@
 ## Purpose
 Enables you to execute console commands from a client to a server using the RBI protocol.
 The server logs the command and execution time.
+The client prints the command output.
 
 ## Includes:
 * RBI Protocol
