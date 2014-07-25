@@ -17,7 +17,12 @@ java -jar build/echoClient.jar
 ```
 
 
-If you want only jars
+If you want only the jars
 ```
-to be updated
+wget https://github.com/syndbg/HackBulgaria/blob/master/Core-Java-1/13-Networking1/build/echoClient.jar?raw=true -O echoClient.jar
+wget https://github.com/syndbg/HackBulgaria/blob/master/Core-Java-1/13-Networking1/build/echoServer.jar?raw=true -O echoServer.jar
+wget https://github.com/syndbg/HackBulgaria/blob/master/Core-Java-1/13-Networking1/build/internetUtils.jar?raw=true -O internetUtils.jar
+java -jar internetUtils.jar
+java -jar echoServer.jar
+java -jar echoClient.jar
 ```
