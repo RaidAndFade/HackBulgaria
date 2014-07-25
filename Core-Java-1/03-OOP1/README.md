@@ -1,9 +1,9 @@
 # Calculator
 
 ## Purpose
-Calculates math expressions... woah!
+Calculates math expressions using [Dijkstra's shunting-yard algorithm](https://en.wikipedia.org/wiki/Shunting-yard_algorithm)!
 
-Supports sum, difference, multiplication, division, power of, factorial and parenthesis priority.
+Supports negative numbers, sum, difference, multiplication, division, power of, factorial and parenthesis priority.
 
 ## How to run
 If you want the whole repo
