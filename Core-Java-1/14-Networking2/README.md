@@ -16,5 +16,5 @@ java -jar build/urlTools.jar
 If you want only the jar
 ```
 wget https://github.com/syndbg/HackBulgaria/blob/master/Core-Java-1/14-Networking2/build/urlTools.jar?raw=true -O urlTools.jar
-java -jar build/urlTools.jar
+java -jar urlTools.jar
 ```
